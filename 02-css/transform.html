@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #ddd;
+        }
+
+        .login-wrap {
+            max-width: 500px;
+            width: 30%;
+            background: white;
+            margin: 0 auto;
+            /* 화면에 따라 유동적으로 값을 주고싶으면 vw 단위를 쓰면 됨 */
+            /* 전체화면의 2프로? */
+            /* padding: 2vw; */
+
+            padding: max(2vw, 20px);
+            border-radius: 30px;
+
+            .tooltip {
+                background: #444c83;
+                color: white;
+                font-size: 0.8rem;
+                border-radius: 10px;
+                display: flex;
+                padding: 10px;
+                position: relative;
+            }
+
+            /* 아래의 설정은 p가 기준이 되어야한다. 이를 위해 tooltop에 position relative를 부여한다. */
+            .tooltip::after {
+                content: "";
+                display: block;
+                width: 10px;
+                height: 10px;
+                background: #444c83;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                /* transform rotate, translate, translateX, ... 는 같이 써야한다. 그렇지 않으면 위의 설정이 사라진다. */
+                transform: translate(-50%, 50%) rotate(45deg);
+            }
+        }
+
+        .box {
+            width: 200px;
+            height: 150px;
+            background: green;
+            /* hover의 동작에 걸리는 시간?? 0.5초 */
+            transition: 0.5s;
+        }
+
+        .box:hover {
+            /* 커서를 올렸을때 몇배로 확대/축소되도록 설정할 수 있다. */
+            transform: scale(1.3);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-wrap">
+        <p class="tooltip">
+            <img src="./images/lighting.svg" alt="">
+            <span>3초만에 회원가입</span>
+        </p>
+    </div>
+    <div class="box"></div>
+</body>
+
+</html>
