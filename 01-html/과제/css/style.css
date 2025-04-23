@@ -1,33 +1,3 @@
-.header-center>nav>ul {
-  display: flex;
-  gap: 50px;
-}
-
-ul {
-  list-style: none;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-}
-
-body {
-  background-color: #f1f3f8;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-
-.logo>img {
-  width: 150px;
-}
-
 header {
   width: 100%;
   height: 80px;
@@ -36,52 +6,97 @@ header {
   .header_wrap {
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
 
   .header_left {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    flex-grow: 1;
     width: 400px;
     height: 100%;
     gap: 30px;
     padding: 30px;
 
+    .home > img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 20px;
+    }
+
+    h1 > .header-logo > img {
+      width: 168px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 20px;
+    }
   }
 
   .header-center {
     display: flex;
     align-items: center;
+    > nav > ul {
+      display: flex;
+      gap: 50px;
+    }
   }
 
-  .menu {
+  .header-right {
     display: flex;
     align-items: center;
     gap: 10px;
 
     .etf {
       width: 110px;
-      background: #280084;
+      /* height: 32px; */
+      background: #000084;
       color: #fff;
       padding: 5px;
-      border-radius: 10px;
+      border-radius: 8px;
       font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
+      /* font-weight: 500; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .my-page > a, .search > a, .hamburger > a {
+      position: relative;
+    }
+
+    .my-page > a::after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url(../images/profile.svg) no-repeat center;
+      background-size: 30px;
+    }
+
+    .search > a::after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url(../images/search.svg) no-repeat center;
+      background-size: 30px;
+    }
+
+    .burger > a::after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url(../images/menu.svg) no-repeat center;
+      background-size: 40px;
     }
   }
 
-  .menu_burger>a {
-    display: block;
-    width: 30px;
-    background: url(./images/menu.svg) no-repeat center center;
-    background-size: 40px;
-    /* 텍스트 화면 끝으로 보내버리기 */
-    text-indent: -9999px;
-  }
-
-  .dropdown-switch {
+  .languages {
     margin-bottom: 8px;
   }
 }
@@ -103,13 +118,50 @@ main {
         padding: 20px 0 20px 0;
       }
 
-      .tooltip-tit {
+      .popup-tooltip {
+        max-width: 500px;
+        width: 55%;
+        background: white;
+        margin: 0 auto;
+        /* 화면에 따라 유동적으로 값을 주고싶으면 vw 단위를 쓰면 됨 */
+        /* 전체화면의 2프로? */
+        /* padding: 2vw; */
+
+        padding: max(2vw, 20px);
+        border-radius: 30px;
+
+        .tooltip {
+          background: #444c83;
+          color: white;
+          font-size: 0.8rem;
+          border-radius: 10px;
+          display: flex;
+          padding: 10px;
+          position: relative;
+        }
+
+        /* 아래의 설정은 p가 기준이 되어야한다. 이를 위해 tooltop에 position relative를 부여한다. */
+        .tooltip::after {
+          content: "";
+          display: block;
+          width: 10px;
+          height: 10px;
+          background: #444c83;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          /* transform rotate, translate, translateX, ... 는 같이 써야한다. 그렇지 않으면 위의 설정이 사라진다. */
+          transform: translate(-50%, 50%) rotate(45deg);
+        }
+      }
+
+      /* .tooltip-tit {
         background-color: #444c83;
         color: #fff;
         display: flex;
         align-items: center;
         width: 95%;
-      }
+      } */
 
       button {
         width: 95%;
@@ -134,15 +186,13 @@ main {
 
       .naver {
         background: #03cf5d;
-        color: #FFF;
+        color: #fff;
       }
 
       .google {
         color: #4d4d4d;
-
       }
     }
-
   }
 }
 
@@ -166,8 +216,26 @@ footer {
 
       .footer-util {
         display: flex;
-        
       }
     }
+
+    .footer-bottom {
+      display: flex;
+      font-size: 10px;
+      color: #9c9b9b;
+    }
   }
+}
+
+.footer-awards {
+  display: flex;
+
+  .award > a > img {
+    width: 80px;
+    height: 50px;
+  }
+}
+
+.sns-links {
+  display: flex;
 }
