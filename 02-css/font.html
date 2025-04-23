@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            /* 영어로만 쓰면 따옴표 필요없고, 띄어쓰기나 한글이 포함되면 따옴표 붙여야함 */
+            font-family: subFont;
+            src: url(./font/Subway-Footlong.woff);
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: "subway font";
+            src: url(./font/Subway-SixInch.woff);
+            font-weight: 100;
+        }
+
+        /* nth-child: 부모의 입장에서 바라보는것 */
+        /* p의 관점에서 나를 바라보는것 */
+        p:nth-of-type(1) {
+            color: red;
+            /* 폰트는 대소문자 정확하게 구분해야한다!! 복붙해야함 */
+            font-family: "Noto Sans KR", sans-serif;;
+            font-optical-sizing: auto;
+            font-weight: 800;
+        }
+
+        p:nth-of-type(2) {
+            font-weight: 800;
+            font-family: "Single Day", cursive;
+        }
+
+        .font-face {
+            font-family: "subway font";
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1>폰트 설정하기</h1>
+    <p>폰트를 연결하는 방법 - 링크 걸어줌!</p>
+    <p>내 컴퓨터에 폰트를 선언한다.</p>
+
+    <h2 class="font-face">Subway</h2>
+    <h2>Subway</h2>
+    
+</body>
+</html>
