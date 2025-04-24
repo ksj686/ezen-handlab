@@ -1,0 +1,34 @@
+.grid-wrap {
+    background-color: antiquewhite;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    padding: 10px;
+
+    > div {
+        border: 1px solid black;
+        background: dodgerblue;
+        padding: 20px;
+        font-size: 2em;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .grid1 {
+        /* 시작줄/시작칸/끝줄/끝칸 */
+        grid-area: 1/1/2/4;
+    }
+
+    /* grid-area로 위치만 옮기기 */
+    .grid2 {
+        grid-area: 3/3/4/4;
+    }
+
+    .grid4 {
+        grid-area: 2/2/4/3;
+    }
+
+    .grid5 {
+        grid-area: 3/1/4/2;
+    }
+}

@@ -1,0 +1,24 @@
+.wrap {
+    background-color: antiquewhite;
+    /* display: flex; */
+    
+    gap: 10px;
+    display: grid;
+    /* 칸의 개수 grid-template-columns: 칸1 칸2 칸3 */
+    /* 가로로 5개 */
+    /* grid-template-columns: 200px 200px 200px 200px 200px; */
+    /* grid-template-columns: auto auto auto auto auto; */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+    /* ↓1fr을 5번 반복↓ */
+    /* grid-template-columns: repeat(5,1fr);  */
+    grid-template-columns: 1fr 2fr 1fr;
+
+    /* 줄의 높이 grid-template-rows */
+    /* 설정안한 줄은 기본값으로 설정됨 */
+    grid-template-rows: 100px 200px;
+
+    > div {
+        background: green;
+        border: 1px solid black;
+    }
+}

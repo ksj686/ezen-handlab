@@ -1,0 +1,78 @@
+/* pc */
+/* pcTitle 보이기 - ipad mobile title 감추기 */
+
+.pcTitle {}
+
+.iPadTitle,
+.mobileTitle {
+    display: none;
+}
+
+.main {
+    max-width: 1600px;
+    border: 1px solid black;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    > div {
+        height: 200px;
+    }
+
+    .box1, .box3 {
+        width: 25%;
+        background: orange;
+
+    }
+
+    .box2 {
+        width: 40%;
+        background: green;
+    }
+}
+
+/* 768~1280 : ipad */
+/* min-width를 설정하면 낮은 버전에 상속이 안된다. 한 방향으로 설정해놓는 것이 좋다 */
+@media screen and (max-width:1280px) {
+    .pcTitle {
+        display: none;
+    }
+
+    .iPadTitle {
+        display: block;
+    }
+
+    .main {
+        /* 넘쳐나는 자식들 줄 변경 */
+        flex-wrap: wrap;
+        .box1, .box3 {
+            /* order - 기본값 0, 숫자가 큰 요소가 뒤로 */
+            order: 1;
+            width: 47%;
+        }
+    
+        .box2 {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    .mobileTitle {
+        display: block;
+    }
+
+    .iPadTitle {
+        display: none;
+    }
+
+    .main {
+        .box1,.box2,.box3 {
+            width: 100%;
+        }
+        .box1, .box3 {
+            order: 0;
+        }
+    }
+    
+}
