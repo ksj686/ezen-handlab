@@ -1,45 +1,94 @@
 header {
   width: 100%;
-  height: 80px;
+
   font-size: 18px;
+  line-height: 1;
+
 
   .header_wrap {
-    width: 100%;
+    /* width: 100%; */
+    max-width: 1700px;
+    height: 80px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: pink;
   }
 
   .header_left {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex-grow: 1;
-    width: 400px;
+    /* width: 400px; */
     height: 100%;
     gap: 30px;
-    padding: 30px;
+    /* padding: 30px; */
 
-    .home > img {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 20px;
+
+    .logo>a {
+      display: block;
+      width: 168px;
+      margin-top: 10px;
     }
 
-    h1 > .header-logo > img {
-      width: 168px;
-      display: flex;
+    .logo img {
+      width: 100%;
+      /* display: flex;
       justify-content: center;
-      align-items: center;
-      height: 20px;
+      align-items: center; */
+
+    }
+
+    .toggle-wrap {
+      display: flex;
+      /* width: 170px; */
+      color: #fff;
+      position: relative;
+
+      >div {
+
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        /* width: 97px;
+        height: 31px; */
+        padding: 8px 20px;
+        border-radius: 30px;
+
+        a {
+          display: block;
+
+          font-size: 0.9rem;
+        }
+      }
+
+      .toggle-etf {
+        background: rgb(20, 84, 255);
+        border: 1px solid rgb(20, 84, 255);
+        z-index: 1;
+      }
+
+      .toggle-fund {
+        position: relative;
+        left: -15px;
+        background: #ddd;
+        border: 1px solid #ddd;
+        color: #616161;
+      }
     }
   }
 
   .header-center {
     display: flex;
     align-items: center;
-    > nav > ul {
+    justify-content: space-evenly;
+    flex-grow: 2;
+    gap: 20px;
+    font-weight: 500;
+
+    >nav>ul {
       display: flex;
       gap: 50px;
     }
@@ -48,14 +97,16 @@ header {
   .header-right {
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
+    flex-grow: 1;
     gap: 10px;
 
     .etf {
-      width: 110px;
+      /* width: 110px; */
       /* height: 32px; */
       background: #000084;
       color: #fff;
-      padding: 5px;
+      padding: 5px 10px;
       border-radius: 8px;
       font-size: 14px;
       /* font-weight: 500; */
@@ -64,20 +115,28 @@ header {
       justify-content: center;
     }
 
-    .my-page > a, .search > a, .hamburger > a {
+    .my-page>a,
+    .search>a,
+    .hamburger>a {
       position: relative;
     }
 
-    .my-page > a::after {
+    .my-page-wrap>div>a::after {
       content: "";
       display: block;
       width: 20px;
       height: 20px;
-      background: url(../images/profile.svg) no-repeat center;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .my-page>a::after {
+
+      background-image: url(../images/profile.svg);
       background-size: 30px;
     }
 
-    .search > a::after {
+    .search>a::after {
       content: "";
       display: block;
       width: 20px;
@@ -86,7 +145,7 @@ header {
       background-size: 30px;
     }
 
-    .burger > a::after {
+    .burger>a::after {
       content: "";
       display: block;
       width: 20px;
@@ -131,16 +190,17 @@ main {
         border-radius: 30px;
 
         .tooltip {
+          top: 40px;
           background: #444c83;
           color: white;
-          font-size: 0.8rem;
+          font-size: 0.85rem;
           border-radius: 10px;
           display: flex;
-          padding: 10px;
+          padding: 3px;
           position: relative;
         }
 
-        /* 아래의 설정은 p가 기준이 되어야한다. 이를 위해 tooltop에 position relative를 부여한다. */
+        /* 아래의 설정은 p가 기준이 되어야한다. 이를 위해 tooltip에 position relative를 부여한다. */
         .tooltip::after {
           content: "";
           display: block;
@@ -198,14 +258,28 @@ main {
 
 footer {
   .footer-container {
+
+    .footer-top,
+    .footer-logo,
+    .footer-bottom {
+      margin-bottom: 30px;
+    }
+
     .footer-top {
       display: flex;
+      align-items: center;
       justify-content: space-between;
 
       .footer-menu {
         display: flex;
         align-items: center;
         gap: 20px;
+
+        >li:not(:last-child)>a::after {
+          content: "|";
+          margin: 8px;
+          color: #ACACAC;
+        }
 
         /* li+li:not(.wrapped)::before{
           content: "";
@@ -221,21 +295,24 @@ footer {
 
     .footer-bottom {
       display: flex;
+      justify-content: space-between;
       font-size: 10px;
       color: #9c9b9b;
+
+      .footer-awards {
+        display: flex;
+        gap: 10px;
+
+        .award>a>img {
+          width: 80px;
+          height: 50px;
+        }
+      }
+
+      .sns-links {
+        display: flex;
+        gap: 20px;
+      }
     }
   }
-}
-
-.footer-awards {
-  display: flex;
-
-  .award > a > img {
-    width: 80px;
-    height: 50px;
-  }
-}
-
-.sns-links {
-  display: flex;
 }
