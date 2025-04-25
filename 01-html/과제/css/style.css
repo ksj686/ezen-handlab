@@ -1,9 +1,6 @@
 header {
-  width: 100%;
-
   font-size: 18px;
   line-height: 1;
-
 
   .header_wrap {
     /* width: 100%; */
@@ -114,11 +111,21 @@ header {
       align-items: center;
       justify-content: center;
     }
-
+    
+    .languages {
+      margin-top: -3px;
+    }
+    
     .my-page>a,
     .search>a,
     .hamburger>a {
       position: relative;
+    }
+
+    .my-page-wrap {
+      display: flex;
+      justify-content: space-evenly;
+      gap: 20px;
     }
 
     .my-page-wrap>div>a::after {
@@ -131,7 +138,6 @@ header {
     }
 
     .my-page>a::after {
-
       background-image: url(../images/profile.svg);
       background-size: 30px;
     }
@@ -155,12 +161,11 @@ header {
     }
   }
 
-  .languages {
-    margin-bottom: 8px;
-  }
 }
 
 main {
+  max-width: 1700px;
+  margin: 0 auto;
   .login-wrap {
     display: flex;
     align-items: center;
@@ -258,7 +263,8 @@ main {
 
 footer {
   .footer-container {
-
+    max-width: 1700px;
+    margin: 0 auto;
     .footer-top,
     .footer-logo,
     .footer-bottom {
@@ -302,6 +308,7 @@ footer {
       .footer-awards {
         display: flex;
         gap: 10px;
+        align-items: center;
 
         .award>a>img {
           width: 80px;
@@ -309,6 +316,10 @@ footer {
         }
       }
 
+      .sns-links-wrap {
+        display: flex;
+        align-items: center;
+      }
       .sns-links {
         display: flex;
         gap: 20px;
