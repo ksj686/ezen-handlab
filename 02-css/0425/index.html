@@ -5,27 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/pretendard.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/style.css">
-    <style>
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-    </style>
 </head>
+
 <body>
+    <div class="skip-menu">
+        <p><a href="#mainNav">주메뉴 바로가기</a></p>
+        <p><a href="#container">본문 바로가기</a></p>
+    </div>
     <!-- 1.header -->
-     <!-- logo, nav, gnb -->
-      <header>
+    <!-- logo, nav, gnb -->
+    <header>
         <div class="content-center">
             <h1 class="logo"><a href="#"><img src="./images/logo.svg" alt="IBK 연금보험 로고"></a></h1>
 
-            <nav>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="#">다이렉트연금</a></li>
 
@@ -53,11 +49,11 @@
             </ul>
         </div>
 
-      </header>
+    </header>
 
     <!-- 2.main -->
-     <!-- slider, 상품, 고객센터 -->
-      <main>
+    <!-- slider, 상품, 고객센터 -->
+    <main id="container">
         <!-- section에는 반드시 제목이 들어가야한다. -->
         <section class="cm-wrap">
             <div class="content-center">
@@ -100,14 +96,14 @@
                             </ul>
 
                             <!-- img slider -->
-                             <ul class="cm-slider-list-img">
+                            <ul class="cm-slider-list-img">
                                 <li><img src="./images/411.png" alt="퇴직금 관리 돼지저금통"></li>
                                 <li><img src="./images/33.png" alt="다이렉트 연금보험 핸드폰그림"></li>
                                 <li><img src="" alt=""></li>
                                 <li><img src="" alt=""></li>
-                             </ul>
+                            </ul>
 
-                             <div class="control-btn-wrap">
+                            <div class="control-btn-wrap">
                                 <div class="counter-wrap">
                                     <span class="current"></span>
                                     <span class="total"></span>
@@ -119,11 +115,11 @@
                                 </div>
 
                                 <ul class="play-stop">
-                                    <li><button class="prv-btn">prev btn</button></li>
-                                    <li><button class="play-stop-btn">play-stop toggle</button></li>
-                                    <li><button class="next-btn">next-btn</button></li>
+                                    <li><button class="prv-btn icon">prev btn</button></li>
+                                    <li><button class="play-stop-btn icon">play-stop toggle</button></li>
+                                    <li><button class="next-btn icon">next-btn</button></li>
                                 </ul>
-                             </div>
+                            </div>
                         </div>
                     </div>
 
@@ -179,7 +175,39 @@
                     </div>
                 </div>
 
-                <div class="cm-bottom-wrap"></div>
+                <div class="cm-bottom-wrap">
+                    <!-- ul.cm-info-list>li*4>a[href="#"]>strong{title1}+p{국채은행 ibk 기업은행}+(p.info-icon>img)+div.cm-more-btn>i -->
+                    <ul class="cm-info-list">
+                        <li>
+                            <a href="#">
+                                <strong>title1</strong>
+                                <p>국채은행 ibk 기업은행</p>
+                                <div class="cm-more-btn"><i></i></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <strong>title1</strong>
+                                <p>국채은행 ibk 기업은행</p>
+                                <div class="cm-more-btn"><i></i></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <strong>title1</strong>
+                                <p>국채은행 ibk 기업은행</p>
+                                <div class="cm-more-btn"><i></i></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <strong>title1</strong>
+                                <p>국채은행 ibk 기업은행</p>
+                                <div class="cm-more-btn"><i></i></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -194,10 +222,58 @@
                 <h2 class="blind">기업상담, 고객의 소리, 민원신청</h2>
             </div>
         </section>
-      </main>
+    </main>
 
     <!-- 3.footer -->
-     <!-- 하단로고, footer menu, sns, address -->
+    <!-- 하단로고, footer menu, sns, address -->
+    <footer>
+        <div class="footer-top">
+            <div class="content-center">
+                <ul class="footer-check">
+                    <!-- 특수문자는 &로 시작해서 ;로 끝남 -->
+                    <li><a href="#">개인신용정보이용&middot;제공 조회</a></li>
+                    <li><a href="#">마케팅동의 및 철회 조회</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-middle">
+            <div class="content-center">
+                <ul class="footer-menu">
+                    <li><a href="#">개인정보 처리방침</a></li>
+                    <li><a href="#">신용정보 활용체제</a></li>
+                    <li><a href="#">보호금융상품등록부</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="content-center">
+                <div>
+                    <address>
+                        <p>주소 : 04511 서울시 중구 칠패로 37, (봉래동 1가, HSBC 빌딩) IBK연금보험</p>
+                        <p>
+                            <span>대표이사 : 임문택</span>
+                            <span>대표전화 :
+                                <a href="tel:02-2270-1600">02-2270-1600</a>
+                            </span>
+                            <span>사업자번호 : 104-86-29322</span>
+                        </p>
+                        <p class="copy">© IBK INSURANCE</p>
+                    </address>
+
+                    <div class="smart-wrap">
+                        <div class="smart-qr"><img src="./images/pic_qr.png" alt="스마트 QR 코드"></div>
+
+                        <div class="smart">
+                            <a href="#void"><i class="icon"></i>IBK연금보험 스마트창구</a>
+                            <p>IBK연금보험 스마트창구를 통해 쉽고 빠르게 다양한 보험서비스를 만나보세요.</p>
+                            <small>※ 스마트폰의 카메라로 왼쪽 QR코드를 촬영해주세요!</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
+
 </html>
