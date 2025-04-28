@@ -216,8 +216,9 @@ header {
                     display: flex;
                     width: 60%;
                     height: 7rem;
-                    justify-content: space-between;
+                    /* justify-content: space-between; */
                     align-items: center;
+
                     .bar-wrap {
                         width: 12rem;
                         height: 0.4rem;
@@ -234,6 +235,52 @@ header {
 
                     ul {
                         display: flex;
+                        position: relative;
+
+                        .prv-btn::after {
+                            content: "";
+                            display: block;
+                            width: 2rem;
+                            height: 2rem;
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                            background-image: url(../images/icon_line_b.svg);
+                            background-repeat: no-repeat;
+                            background-position: 70% -24rem;
+                            background-size: 1100% auto;
+                        }
+
+                        .play-stop-btn::after {
+                            content: "";
+                            display: block;
+                            width: 2rem;
+                            height: 2rem;
+                            position: absolute;
+                            left: 150%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                            background-image: url(../images/icon_line_b.svg);
+                            background-repeat: no-repeat;
+                            background-position: -2% -24rem;
+                            background-size: 1100% auto;
+                        }
+
+                        .next-btn::after {
+                            content: "";
+                            display: block;
+                            width: 2rem;
+                            height: 2rem;
+                            position: absolute;
+                            left: 320%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                            background-image: url(../images/icon_line_b.svg);
+                            background-repeat: no-repeat;
+                            background-position: 60% -24rem;
+                            background-size: 1100% auto;
+                        }
                     }
                 }
                 .control-btn-wrap::before {
