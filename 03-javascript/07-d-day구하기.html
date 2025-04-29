@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 특정날짜의 정보 얻어오기
+        // 2025.7.1
+        let dDay = new Date(2025,6,1);
+        console.log(dDay);
+
+        // 오늘 날짜 정보 얻어오기
+        let today = new Date();
+        console.log(today);
+
+        let diff = dDay-today;
+        // 날짜의 차이 결과값은 밀리sec가 나옴.
+
+
+        console.log(diff/(24*60*60*1000));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

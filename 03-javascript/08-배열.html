@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 배열 : 하나의 이름에 여러개의 데이터를 순차적으로 저장
+        // 1. 배열명 = new Array();
+        // 배열명[0] = 데이터;
+        // 배열명[1] = 데이터;
+
+        // 2. 배열명 = new Array("데이터1", "데이터2");
+        // 3. 배열명 = [데이터1, 데이터2]; => 대부분 사용하는 방식
+
+        let fruits = ["딸기", "참외", "오렌지", "포도"];
+        let rains = ["우산", "막걸리", "파전"];
+        console.log(fruits);
+        // 2번째 데이터
+        console.log(fruits[2]);
+
+        // 배열 메서드
+        // 배열 마지막에 데이터를 추가
+        fruits.push("한라봉");
+        console.log(fruits);
+
+        // 배열 마지막에서 데이터 추출 pop()
+        fruits.pop();
+        console.log(fruits);
+
+        // 배열 맨 앞에 데이터를 추가 unshift()
+        fruits.unshift("한라봉");
+        console.log(fruits);
+        
+        // 배열 맨 앞에서 데이터 추출 shift()
+        fruits.shift();
+        console.log(fruits);
+
+        // splice 중간에 여러개 추가 / 제거
+        fruits.splice(2,0,"바나나","귤","용과"); // 2,3번째 사이에 0개 제거하고 3개 데이터 추가
+        console.log(fruits);
+
+        // 3번째부터 3개 제거
+        fruits.splice(2,3)
+        console.log(fruits);
+
+        // 정렬 오름차순
+        fruits.sort();
+        console.log(fruits);
+        
+        // 정렬 내림차순
+        fruits.reverse();
+        console.log(fruits);
+
+        // 두 배열 하나로 합치기
+        let total = fruits.concat(rains);
+        console.log(total);
+
+        // rains에 있는 데이터를 * 로 연결하여 문자열로 표시
+        let starRain = rains.join("*");
+        console.log(starRain);
+
+        // 속성 length
+        console.log(fruits.length);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

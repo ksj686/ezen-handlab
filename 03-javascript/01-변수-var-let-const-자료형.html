@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 변수의 종류 3가지
+        // 1. var
+        // 재선언, 재할당, 변하는 데이터를 저장할 때 사용
+        var lang = "한글";
+        var lang = "영문";
+        lang = "중문";
+
+        // 2. let
+        // 재선언 불가, 재할당 가능
+        let userName = "홍길동";
+        console.log(userName);
+        // let userName = "김철수"; // 에러! 재선언 불가!
+        userName = "김철수";
+        console.log(userName);
+
+        // 3. const 
+        // 상수를 저장하는 용도. 다른 프로그램에서는 주로 대문자로 선언.
+        // 재선언, 재할당 불가
+        const userAge = 18;
+        console.log(userAge);
+        // userAge = 11; // 에러! 재할당 불가
+
+
+        // 데이터 타입의 종류
+        // 1. 숫자
+        // 2. 문자
+        // 3. Boolean true false
+        let checked = true;
+        let isShow = false;
+        console.log(checked, isShow);
+
+        // 4. undefined
+        let undef;
+        console.log(undef);
+
+        // 5. null
+        let myNull = "화요일";
+        myNull = null;
+        console.log(myNull);
+
+        // 6. 객체 데이터
+        let user = {
+            name: "kim",
+            age: 18,
+            job: "프리랜서"
+        }
+
+        console.log(user);
+        console.log(user.name);
+
+
+        var person1 = {
+            name: 'Lee',
+            gender: 'male',
+            sayHello: () => 
+                console.log('Hi! My name is ' + this.name)
+        };
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
