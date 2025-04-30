@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* a 밑줄제거, 색은 상속받아서 */
+/* a 밑줄제거, 색은 상속받음. inherit 설정 중요!! */
 a {
     text-decoration: none;
     color: inherit;

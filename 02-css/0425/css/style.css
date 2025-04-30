@@ -13,12 +13,14 @@
 body {
     line-height: 3rem;
     color: var(--ibk-text-color);
+    font-size: 1.6rem;
 }
 
 .content-center {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1.6rem;
     background-color: rgba(255,0,0,0.2);
 }
 
@@ -331,4 +333,140 @@ header {
         }
     }
 }
+
 /* footer */
+footer {
+    .footer-top {
+        /* footer 아래에 줘도 무관함. */
+        border-top: 1px solid var(--ibk-main-bg-color);
+        padding: 2rem 0;
+
+        .footer-check {
+            display: flex;
+            /* 반응형을 생각하면 rem으로 주면 좋다? */
+            gap: 2rem;
+
+            li {
+                a {
+                    /* 현재는 이상없지만 옆에 다른 요소가 오면 이상이 생길 수 있다. */
+                    display: block;
+                    background: var(--ibk-main-color);
+                    color: white;
+                    padding: 0 1.6rem;
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                    border-radius: 3rem;
+                }
+            }
+        }
+    }
+    .footer-middle {
+        background: var(--ibk-main-bg-color);
+        line-height: 7rem;
+        .footer-menu {
+            display: flex;
+            /* 도트 구분선을 넣기 위해 간격을 크게 줌. 도트는 링크가 없으므로 li에 준다. */
+            gap: 3.5rem;
+
+            li {
+                position: relative;
+                a {}
+            }
+
+            li::after {
+                content: "";
+                display: block;
+                width: 4px;
+                height: 4px;
+                background-color: var(--ibk-text-color);
+                position: absolute;
+                right: -2rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            /* 마지막 점 없애기 */
+            li:last-child::after {
+                display: none;
+            }
+
+            li:first-child {
+                color: var(--ibk-main-color);
+            }
+        }
+    }
+    .footer-bottom {
+        padding: 5rem 0;
+
+        > div > div {
+            display: flex;
+            justify-content: space-between;
+
+            address {}
+
+            .smart-wrap {
+                display: flex;
+                gap: 3rem;
+                
+                .smart-qr {
+                    width: 10rem;
+                    /* border-radius: 1rem; */
+                    overflow: hidden;
+                    box-shadow: 0 0 1rem 1rem rgba(0,0,0,0.1);
+                }
+                .smart {
+                    a {
+                        font-size: 1.8rem;
+                        color: var(--ibk-main-color);
+                        font-weight: 800;
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        margin-bottom: 0.7rem;
+
+                        i {
+                            display: block;
+                            width: 2rem;
+                            height: 2rem;
+                            background-image: url(../images/icon_line_b.svg);
+                            background-position: 70% -18rem;
+                            background-size: 1100%;
+                        }
+                    }
+                    small {
+                        font-size: 1.2rem;
+                        color: var(--ibk-secondary-color);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1279px) {
+    html {
+        font-size: 9px;
+    }
+    .content-center {}
+}
+
+@media screen and (max-width:980px) {
+    .footer-bottom {
+        > div > div {
+            display: block;
+
+            .smart-wrap {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    /* 본문 제목 24px */
+    /* 푸터 11px, 12px */
+    html {
+        font-size: 8px;
+    }
+}
+
