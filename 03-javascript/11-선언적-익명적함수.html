@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 위에서 호출해도 정상적으로 작동
+        greet();
+        // 선언적 함수
+        function greet() {
+            console.log("안녕~ 선언적 함수");
+        }
+        
+        // msgGreet(); // 에러! 선언적 함수와 달리 선언 부분 위에서 호출하면 에러남.
+        // 익명적함수 - 함수 표현식
+        const msgGreet = function() {
+            console.log("안녕~ 익명적 함수");
+        }
+
+        msgGreet();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 선언적 함수
+        function hi1() {
+            document.write("하이~ 일반 함수<br>");
+        }
+
+        // 2. 익명적 함수
+        let hi2 = function() {
+            document.write("하이~ 익명적 함수<br>");
+        }
+
+        // 3. 화살표 함수
+        // 함수가 간단할땐 중괄호를 생략하는 경우도 있다.
+        let hi3 = () => document.write("화살표");
+
+        hi1();
+        hi2();
+        hi3();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
