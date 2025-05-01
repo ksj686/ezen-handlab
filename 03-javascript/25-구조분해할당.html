@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 배열
+        const colors = ["red","green","blue"];
+
+        // first = colors[0]
+        // second = colors[1];
+        // third = colors[2];
+        // 구조분해할당
+        const [first, second, third] = colors;
+        console.log(first);
+        console.log(second);
+        console.log(third);
+
+        let store = ["과일","음료수","빵","라면","햄"];
+
+        // 첫번째 과일은 fruit
+        // 나머지는 food. ... -> spread 연산자
+        let [fruit, ...food] = store;
+        console.log(fruit);
+        console.log(food);
+
+        // 첫번째는 fruit2, 두번째는 drink, 마지막은 ham
+        let [fruit2, drink, , , ham] = store;
+        console.log(fruit2, drink, ham);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
