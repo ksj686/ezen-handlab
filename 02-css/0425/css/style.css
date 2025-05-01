@@ -7,6 +7,7 @@
     --ibk-secondary-color: #72808e;
     /*  */
     --border-radius: 4rem;
+    --test-color: #68a4b4;
 }
 
 /* body */
@@ -149,11 +150,14 @@ header {
 /* main */
 .cm-wrap {
     .cm-top-wrap {
+        padding: 7rem, 0;
         display: flex;
         justify-content: space-between;
+        gap: 3rem;
 
         .cm-top-left {
             width: calc(100% / 3 * 2);
+            margin-bottom: 7rem;
 
             /* 하나의 배너에 여러 ul을 넘기는 형태 - ul이 겹치도록 설정해야함 */
             .cm-slider-wrap {
@@ -332,116 +336,210 @@ header {
             }
         }
     }
-}
-
-/* footer */
-footer {
-    .footer-top {
-        /* footer 아래에 줘도 무관함. */
-        border-top: 1px solid var(--ibk-main-bg-color);
-        padding: 2rem 0;
-
-        .footer-check {
-            display: flex;
-            /* 반응형을 생각하면 rem으로 주면 좋다? */
-            gap: 2rem;
+    
+    .cm-bottom-wrap {
+        .cm-info-list {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(2,1fr);
+            grid-gap: 3rem;
 
             li {
                 a {
-                    /* 현재는 이상없지만 옆에 다른 요소가 오면 이상이 생길 수 있다. */
                     display: block;
-                    background: var(--ibk-main-color);
-                    color: white;
-                    padding: 0 1.6rem;
-                    font-size: 1.4rem;
-                    font-weight: 700;
-                    border-radius: 3rem;
+                    width: 100%;
+                    height: 100%;
+                    background: var(--ibk-main-bg-color);
+                    padding: 3.5rem;
+                    border-radius: 4rem;
+                    position: relative;
+
+                    strong {
+                        font-size: 2.5rem;
+                        color: var(--ibk-main-color);
+                    }
+
+                    .cm-more-btn {
+                        width: 7.5rem;
+                        height: 7.5rem;
+                        border-radius: 4rem 0 0 0;
+                        background: green;
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+
+                        /* inline상태일땐 너비 높이를 가질 수 없기 때문에 block 설정 */
+                        i {
+                            display: block;
+                            width: 6rem;
+                            height: 6rem;
+                            background: black;
+                            border-radius: 50%;
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            /* 다른 영역과 겹치므로 z-index설정 */
+                            z-index: 10;
+                        }
+
+                        i::after {
+                            content: "";
+                            display: block;
+                            width: 2.8rem;
+                            height: 2.8rem;
+                            background-image: url(../images/icon_line_w.svg);
+                            background-size: 1100%;
+                            background-position: 0 -30.8rem;
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%) rotate(45deg);
+                        }
+                    }
+
+                    .cm-more-btn::before,
+                    .cm-more-btn::after {
+                        content: "";
+                        /* inline상태일땐 너비 높이를 가질 수 없기 때문에 block 설정 */
+                        display: block;
+                        width: 8rem;
+                        height: 8rem;
+                        border-radius: 50%;
+                        background-color: rgb(255, 255, 255);
+                        position: absolute;
+                        bottom: 7.5rem;
+                        box-shadow: 4rem 4rem 0 0 red;
+                    }
+
+                    .cm-more-btn::before {
+                        bottom: 0;
+                        left: -8rem;
+                        box-shadow: 4rem 4rem 0 0 blue;
+
+                    }
+
                 }
-            }
-        }
-    }
-    .footer-middle {
-        background: var(--ibk-main-bg-color);
-        line-height: 7rem;
-        .footer-menu {
-            display: flex;
-            /* 도트 구분선을 넣기 위해 간격을 크게 줌. 도트는 링크가 없으므로 li에 준다. */
-            gap: 3.5rem;
-
-            li {
-                position: relative;
-                a {}
-            }
-
-            li::after {
-                content: "";
-                display: block;
-                width: 4px;
-                height: 4px;
-                background-color: var(--ibk-text-color);
-                position: absolute;
-                right: -2rem;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
-            /* 마지막 점 없애기 */
-            li:last-child::after {
-                display: none;
             }
 
             li:first-child {
-                color: var(--ibk-main-color);
+                grid-row: 1/3;
+            }
+            li:nth-child(2) {
+                grid-row: 1/3;
             }
         }
     }
-    .footer-bottom {
-        padding: 5rem 0;
+}
 
-        > div > div {
+/* footer */
+footer {}
+
+.footer-top {
+    /* footer 아래에 줘도 무관함. */
+    border-top: 1px solid var(--ibk-main-bg-color);
+    padding: 2rem 0;
+
+    .footer-check {
+        display: flex;
+        /* 반응형을 생각하면 rem으로 주면 좋다? */
+        gap: 2rem;
+
+        li {
+            a {
+                /* 현재는 이상없지만 옆에 다른 요소가 오면 이상이 생길 수 있다. */
+                display: block;
+                background: var(--ibk-main-color);
+                color: white;
+                padding: 0 1.6rem;
+                font-size: 1.4rem;
+                font-weight: 700;
+                border-radius: 3rem;
+            }
+        }
+    }
+}
+.footer-middle {
+    background: var(--ibk-main-bg-color);
+    line-height: 7rem;
+    .footer-menu {
+        display: flex;
+        /* 도트 구분선을 넣기 위해 간격을 크게 줌. 도트는 링크가 없으므로 li에 준다. */
+        gap: 3.5rem;
+
+        li {
+            position: relative;
+            a {}
+        }
+
+        li::after {
+            content: "";
+            display: block;
+            width: 4px;
+            height: 4px;
+            background-color: var(--ibk-text-color);
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* 마지막 점 없애기 */
+        li:last-child::after {
+            display: none;
+        }
+
+        li:first-child {
+            color: var(--ibk-main-color);
+        }
+    }
+}
+.footer-bottom {
+    padding: 5rem 0;
+
+    > div > div {
+        display: flex;
+        justify-content: space-between;
+
+        address {}
+
+        .smart-wrap {
             display: flex;
-            justify-content: space-between;
+            gap: 3rem;
+            
+            .smart-qr {
+                width: 10rem;
+                /* border-radius: 1rem; */
+                overflow: hidden;
+                box-shadow: 0 0 1rem 1rem rgba(0,0,0,0.1);
+            }
+            .smart {
+                a {
+                    font-size: 1.8rem;
+                    color: var(--ibk-main-color);
+                    font-weight: 800;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    margin-bottom: 0.7rem;
 
-            address {}
-
-            .smart-wrap {
-                display: flex;
-                gap: 3rem;
-                
-                .smart-qr {
-                    width: 10rem;
-                    /* border-radius: 1rem; */
-                    overflow: hidden;
-                    box-shadow: 0 0 1rem 1rem rgba(0,0,0,0.1);
+                    i {
+                        display: block;
+                        width: 2rem;
+                        height: 2rem;
+                        background-image: url(../images/icon_line_b.svg);
+                        background-position: 70% -18rem;
+                        background-size: 1100%;
+                    }
                 }
-                .smart {
-                    a {
-                        font-size: 1.8rem;
-                        color: var(--ibk-main-color);
-                        font-weight: 800;
-                        display: flex;
-                        align-items: center;
-                        gap: 1rem;
-                        margin-bottom: 0.7rem;
-
-                        i {
-                            display: block;
-                            width: 2rem;
-                            height: 2rem;
-                            background-image: url(../images/icon_line_b.svg);
-                            background-position: 70% -18rem;
-                            background-size: 1100%;
-                        }
-                    }
-                    small {
-                        font-size: 1.2rem;
-                        color: var(--ibk-secondary-color);
-                    }
+                small {
+                    font-size: 1.2rem;
+                    color: var(--ibk-secondary-color);
                 }
             }
         }
     }
 }
+
 
 @media screen and (max-width:1279px) {
     html {
@@ -451,6 +549,15 @@ footer {
 }
 
 @media screen and (max-width:980px) {
+    .cm-wrap {
+        .cm-bottom-wrap {
+            /* ↓↓↓이 한줄만 적어주면 바뀌지 않는다. 위에서 쓴 선택자를 그대로 써야 적용된다! */
+            .cm-info-list {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+    }
+
     .footer-bottom {
         > div > div {
             display: block;
@@ -469,4 +576,3 @@ footer {
         font-size: 8px;
     }
 }
-
