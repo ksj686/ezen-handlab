@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // DOMContentLoaded => 모든 요소가 로딩된 후 실행하라는 뜻
+        document.addEventListener("DOMContentLoaded",()=>{
+            // 태그 생성
+            let hTitle = document.createElement("h1");
+            // 내용물 생성
+            let hText = document.createTextNode("Dom 객체");
+            // h1 태그 속에 hText 내용물 넣기
+            hTitle.appendChild(hText);
+            // body 속에 붙이기. ↓↓↓제대로 안붙는다. 아직 로드가 안되어 body가 뭔지 모르는 상태
+            document.body.appendChild(hTitle); // 
+        });
+        /*
+        // 태그 생성
+        let hTitle = document.createElement("h1");
+        // 내용물 생성
+        let hText = document.createTextNode("Dom 객체");
+        // h1 태그 속에 hText 내용물 넣기
+        hTitle.appendChild(hText);
+        // body 속에 붙이기. ↓↓↓제대로 안붙는다. 아직 로드가 안되어 body가 뭔지 모르는 상태
+        document.body.appendChild(hTitle); // 
+        */
+    </script>
+</head>
+<body>
+
+</body>
+</html>
