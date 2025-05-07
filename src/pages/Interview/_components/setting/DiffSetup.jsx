@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import checkedCircle from "@/assets/images/checked-circle.svg";
 import starFill from "@/assets/images/star-fill.svg";
@@ -6,6 +6,7 @@ import starEmpty from "@/assets/images/star-empty.svg";
 
 import Button from "@/components/common/Button";
 import clsx from "clsx";
+import { useInterviewTabStore, useSetupNavigationStore } from "@/store/store";
 
 const levels = [
   {
@@ -35,6 +36,21 @@ const levels = [
 ];
 
 const DiffSetup = () => {
+  const setTabSelect = useInterviewTabStore((state) => state.setTabSelect);
+  const { navigateTo } = useSetupNavigationStore((state) => state);
+
+  useEffect(() => {
+    setTabSelect("설정");
+  }, []);
+
+  const handlePrevious = () => {
+    navigateTo("DeviceSetup");
+  };
+
+  const handleNext = () => {
+    navigateTo("RoleSetup");
+  };
+
   const [selected, setSelected] = useState("신입");
 
   return (
@@ -97,10 +113,16 @@ const DiffSetup = () => {
         })}
       </ul>
 
-      <div className="mt-10 flex gap-15">
+      <div class="fixed bottom-20 left-0 flex w-full justify-center gap-15">
+        <Button color="gray" onClick={handlePrevious}>
+          이전
+        </Button>
+        <Button onClick={handleNext}>다음</Button>
+      </div>
+      {/* <div className="mt-10 flex gap-15">
         <Button color="gray">이전</Button>
         <Button>다음</Button>
-      </div>
+      </div> */}
     </div>
   );
 };
