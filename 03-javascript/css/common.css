@@ -1,0 +1,79 @@
+/* 모든 선택자 여백제거 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* a 밑줄제거, 색은 상속받음. inherit 설정 중요!! */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* li 장식제거 */
+menu, ol, ul {
+    list-style: none;
+}
+
+/* img, video 정렬 크기(원래 사이즈보다 안커지도록) */
+img, video {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+/* input, button, textarea, select 폰트 부모에게 상속 */
+input, button, textarea, select {
+    font: inherit;
+}
+
+/* input:focus 테두리 제거 */
+input:focus {
+    outline: none;
+}
+
+/* table 테두리 - collapse: 선이 두개 나올때 겹치도록 해서 하나만 나오도록*/
+table {
+    border-collapse: collapse;
+}
+
+/* .blind */
+.blind {
+    position: absolute;
+    top: -9999px;
+}
+
+/* .skip -> .blind와 비슷 */
+.skip-menu a {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: -9999px;
+    line-height: 50px;
+    text-align: center;
+    background: #0099DA;
+}
+
+/* focus가 없을땐 안보이고 있을때 나타나도록, a focus시 outline none */
+.skip-menu a:focus {
+    top: 0;
+    outline: none;
+}
+
+address, i, em {
+    font-size: normal;
+}
+
+/* button cursor는 설정 해줘야 나옴 */
+button {
+    cursor: pointer;
+}
+
+/* body - 사이트마다 다를 수 있음.*/
+body {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    /* 자간설정 */
+    letter-spacing: -0.032rem;
+}
