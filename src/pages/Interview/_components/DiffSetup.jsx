@@ -71,7 +71,7 @@ const DiffSetup = () => {
                       className="h-5 w-5 shrink-0"
                     />
                   )}
-                  <strong className="text-lg">{level.label}</strong>
+                  <strong className="text-[20px]">{level.label}</strong>
                 </div>
                 <div className="flex gap-1">
                   {Array(level.stars)
@@ -88,7 +88,7 @@ const DiffSetup = () => {
               </div>
 
               {isSelected && level.description && (
-                <p className="mt-2 px-7 text-sm leading-relaxed whitespace-pre-wrap text-[#291B9A]">
+                <p className="mt-2 px-7 text-[18px] leading-relaxed whitespace-pre-wrap text-[#291B9A]">
                   {level.description}
                 </p>
               )}
