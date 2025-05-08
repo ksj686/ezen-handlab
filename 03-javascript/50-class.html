@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //사람 클래스 만들기
+        class Person {
+            //상태변수
+            constructor(name, age, city) {
+                this.name = name;
+                this.age = age;
+                this.city = city;
+                this.hobby = "잠자기"
+            }
+            //메서드
+            nextYear(){
+                return Number(this.age)+1;
+            }
+        }
+        //카페 클래스 만들기
+        //사람에서 사용한 변수를 상속, 추가로 새로운 변수와 메서드
+        class Cafe extends Person{
+            //변수
+            constructor(name,age,job,city){
+                super(name,age,city);
+                this.job = job;
+            }
+
+            //메서드
+            drink(){
+                return `나 ${this.name}은 ${this.city}에서 커피 마시는걸 좋아해.
+                나의 직업은${this.job}이고, 취미는 ${this.hobby}입니다`
+            }
+        }
+        let park = new Cafe("박세리",33,"프로골퍼","제주도");
+        console.log(park);
+        console.log(park.drink());
+        console.log(park.nextYear());
+    </script>
+</body>
+
+</html>

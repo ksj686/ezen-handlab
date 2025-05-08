@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //사란과 관련된 클래스 만들기
+        class Person {
+            //변수
+            constructor(name, age, tel, city) {
+                this.name = name;
+                this.age = age;
+                this.tel = tel;
+                this.city = city;
+            }
+            //메서드
+            nextYear() {
+                return Number(this.age) + 1
+            }
+        }
+
+        let user = new  Person("홍길동",18,"010-1111-1111","서울");
+        console.log(user);
+        console.log(user.nextYear());
+
+        let user2 = new Person("김철수","30","010-2222-3333","부산");
+        console.log(user2);
+        console.log(user2.nextYear());
+
+        //Cafe 클래스 만들기
+        //Person클래스에서 사용한 속성과 메서드를 모두 사용
+        //상속 extends
+        class Cafe extends Person{
+            //메서드
+            drink(){
+                return `${this.name}는 ${this.city}에서 커피 마시는걸 좋아해~~`
+            }
+        }
+
+        let kim = new Cafe("영희",30,"010-2222-2222","제주도");
+        console.log(kim);
+        console.log(kim.drink())
+    </script>
+</body>
+
+</html>

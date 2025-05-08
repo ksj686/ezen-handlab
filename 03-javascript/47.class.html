@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="carKind"></div>
+    <script>
+        //차 클래스 만들기
+        class Car{
+            constructor(ukind,uname,year){
+                this.kind=ukind;
+                this.name=uname;
+                this.year=year
+            }
+        }
+
+        let myCar1 = new Car("승용차","포드",2025);
+        let myCar2 = new Car("스포츠카","산타페",2000);
+
+
+        document.querySelector(".carKind").innerHTML=`${myCar1.name}는 ${myCar1.kind}`
+
+    </script>
+</body>
+</html>

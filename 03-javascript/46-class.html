@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //생성자함수+프로토타입
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.greet = function () {
+            console.log(`안녕하세요, 저는 ${this.name}입니다, 
+            나이는 ${this.age}살입니다`)
+        }
+
+        const man = new Person("짱구", 5);
+        man.greet();
+
+        //class
+        class Person2 {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            greet2(){
+                console.log(`class 안녕 나는 ${this.name}야, 나이는 ${this.age}`)
+            }
+        }
+
+        const p2 = new Person2("철수",30);
+        p2.greet2();
+    </script>
+</body>
+
+</html>
