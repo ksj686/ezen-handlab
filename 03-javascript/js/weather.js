@@ -1,4 +1,4 @@
-const API_KEY = "23cf5e1bd5401b1f7c667668f8f72c23";
+const API_KEY = "API키";
 let iconSection = document.querySelector(".icon img");
 let tempSection = document.querySelector(".temp");
 let descSection = document.querySelector(".description");
