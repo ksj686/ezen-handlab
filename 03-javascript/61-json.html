@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //fetch는  http에 데이터를 요청할때 사용 반환값 promise객체
+        fetch("data.json")//서버에서 응답을 받을때 실행
+            .then(response => {
+                // 응답 개체 전체를 출력해서 어떤 정보가 있는지 확인
+                //상태, 정상,body,headers등의 전체 정보가 들어있음
+                console.log(response)
+                //응답 받은 본문을 json객체로 파싱해주기
+                return response.json();
+            })//응답 받은 데이터를 처리할때
+            .then(data => {
+                console.log(data);
+                console.log(data.name,data.age)
+            })//에러가 떳을때
+            .catch(error => {
+
+            })
+    </script>
+</body>
+
+</html>
