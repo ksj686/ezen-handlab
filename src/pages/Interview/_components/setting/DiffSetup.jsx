@@ -7,6 +7,7 @@ import starEmpty from "@/assets/images/star-empty.svg";
 import Button from "@/components/common/Button";
 import clsx from "clsx";
 import { useInterviewTabStore, useSetupNavigationStore } from "@/store/store";
+import { useInterviewLevelStore } from "@/store/interviewSetupStore";
 
 const levels = [
   {
@@ -18,19 +19,19 @@ const levels = [
   {
     label: "경력 1~3년",
     description:
-      "짧지만 실무를 경험해본 만큼, 실무 역량과 문제 해결력을 중심으로 확인합니다.\n기초 지식에 더해 실제 프로젝트 경험을 바탕으로 답할 수 있는 질문들로 구성되어 있어요",
+      "짧지만 실무를 경험해본 만큼, 실무 역량과 문제 해결력을 중심으로 확인합니다.\n기초 지식에 더해 실제 프로젝트 경험을 바탕으로 답할 수 있는 질문들로 구성되어 \n있어요",
     stars: 2,
   },
   {
     label: "경력 4~7년",
     description:
-      "경험이 쌓인 만큼 기술 선택의 이유, 협업 경험, 아키텍처 이해 등 심화된 질문이 포함됩니다.\n문제를 어떻게 바라보고 풀어가는지에 대한 사고 방식도 중요하게 평가해요",
+      "경험이 쌓인 만큼 기술 선택의 이유, 협업 경험, 아키텍처 이해 등 심화된 질문이 \n포함됩니다.\n문제를 어떻게 바라보고 풀어가는지에 대한 사고 방식도 중요하게 평가해요",
     stars: 3,
   },
   {
     label: "경력 7년 이상",
     description:
-      "기술 리더 혹은 아키텍트로서의 시야를 기대합니다.\n조직 내 기술 방향성, 리딩 경험, 시스템 설계 전반에 대한 인사이트를 중심으로 질문합니다",
+      "기술 리더 혹은 아키텍트로서의 시야를 기대합니다.\n조직 내 기술 방향성, 리딩 경험, 시스템 설계 전반에 대한 인사이트를 중심으로 \n질문합니다",
     stars: 4,
   },
 ];
@@ -38,6 +39,9 @@ const levels = [
 const DiffSetup = () => {
   const setTabSelect = useInterviewTabStore((state) => state.setTabSelect);
   const { navigateTo } = useSetupNavigationStore((state) => state);
+
+  // 상태 불러오기
+  const { level, setLevel } = useInterviewLevelStore();
 
   useEffect(() => {
     setTabSelect("설정");
@@ -51,35 +55,40 @@ const DiffSetup = () => {
     navigateTo("RoleSetup");
   };
 
-  const [selected, setSelected] = useState("신입");
+  // const [selected, setSelected] = useState("신입");
 
   return (
-    <div className="mx-auto flex w-full flex-col items-center px-4 py-8">
-      <div className="text-zik-text mt-8 mb-8 text-[30px] font-bold">
+    <div
+      className="w- mx-auto flex w-full flex-col items-center justify-center px-4 py-4 2xl:py-8"
+      style={{ height: "calc(100vh - 14rem)" }}
+    >
+      <div className="text-zik-text mt-4 mb-8 text-2xl font-bold">
         질문 난이도를 설정하세요
       </div>
 
-      <ul className="w-[700px] space-y-4">
-        {levels.map((level) => {
-          const isSelected = selected === level.label;
+      <ul className="w-2xl space-y-4">
+        {levels.map((levelOption) => {
+          const isSelected = level === levelOption.label;
 
           return (
             <li
-              key={level.label}
-              onClick={() => setSelected(level.label)}
+              key={levelOption.label}
+              onClick={() => setLevel(levelOption.label)}
               className={clsx(
-                "border-zik-border cursor-pointer rounded-xl border px-6 py-4 transition-all",
+                "border-zik-border flex h-20 cursor-pointer flex-col justify-center overflow-hidden rounded-xl border px-6 py-4 transition-all duration-300 ease-in-out",
                 {
-                  "bg-zik-main/30 text-[#291B9A]": isSelected,
+                  "bg-zik-main/30 h-30 text-[#291B9A] duration-300 2xl:h-36":
+                    isSelected,
                 },
               )}
             >
               <div
                 className={clsx("flex items-center justify-start gap-7", {
                   "px-7": !isSelected,
+                  "gap-14": isSelected,
                 })}
               >
-                <div className="flex min-w-[100px] items-center gap-2">
+                <div className="flex min-w-[190px] items-center gap-2">
                   {isSelected && (
                     <img
                       src={checkedCircle}
@@ -87,10 +96,12 @@ const DiffSetup = () => {
                       className="h-5 w-5 shrink-0"
                     />
                   )}
-                  <strong className="text-[20px]">{level.label}</strong>
+                  <strong className="px-7 text-lg 2xl:text-xl">
+                    {levelOption.label}
+                  </strong>
                 </div>
                 <div className="flex gap-1">
-                  {Array(level.stars)
+                  {Array(levelOption.stars)
                     .fill(0)
                     .map((_, idx) => (
                       <img
@@ -103,17 +114,28 @@ const DiffSetup = () => {
                 </div>
               </div>
 
-              {isSelected && level.description && (
-                <p className="mt-2 px-7 text-[18px] leading-relaxed whitespace-pre-wrap text-[#291B9A]">
-                  {level.description}
-                </p>
-              )}
+              <div
+                className={clsx(
+                  "transform transition-all duration-300 ease-in-out",
+                  isSelected
+                    ? "max-h-40 translate-y-0 opacity-100"
+                    : "max-h-0 translate-y-[-10px] opacity-0",
+                )}
+              >
+                {levelOption.description && (
+                  <p className="mt-2 px-14 text-sm leading-relaxed whitespace-pre-wrap text-[#291B9A] 2xl:text-base">
+                    {levelOption.description}
+                  </p>
+                )}
+              </div>
             </li>
           );
         })}
       </ul>
 
-      <div class="fixed bottom-20 left-0 flex w-full justify-center gap-15">
+      {/* <div class="relative bottom-0 mt-5 flex justify-center gap-15 2xl:!absolute 2xl:!bottom-10"> */}
+      {/* <div class="absolute bottom-16 flex justify-center gap-15"> */}
+      <div className="absolute bottom-10 flex justify-center gap-15">
         <Button color="gray" onClick={handlePrevious}>
           이전
         </Button>

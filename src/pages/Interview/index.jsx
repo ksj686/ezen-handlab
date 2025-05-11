@@ -1,6 +1,7 @@
-// example
-import React from "react";
+import React, { useEffect } from "react";
+// import { useLocation } from "react-router-dom";
 import { useSetupNavigationStore } from "@/store/store";
+import { useInterviewLevelStore } from "@/store/interviewSetupStore";
 import DeviceSetup from "./_components/setting/DeviceSetup";
 import DiffSetup from "./_components/setting/DiffSetup";
 import RoleSetup from "./_components/setting/RoleSetup";
@@ -8,7 +9,26 @@ import PreCheckStep from "./_components/setting/PreCheckStep";
 import InterviewSection from "./_components/interview/InterviewSection";
 
 const index = () => {
-  const { currentComponent } = useSetupNavigationStore((state) => state);
+  // const location = useLocation();
+  const resetLevel = useInterviewLevelStore((state) => state.resetLevel);
+
+  const { currentComponent, resetNavigation } = useSetupNavigationStore(
+    (state) => state,
+  );
+
+  // 컴포넌트 마운트 시 상태 초기화
+  useEffect(() => {
+    // const isInInterviewFlow = location.pathname.startsWith("/interview");
+    // if (!isInInterviewFlow) {
+    // resetLevel();
+    // }
+
+    // 컴포넌트 언마운트(페이지 이탈) 시 초기화
+    return () => {
+      resetNavigation();
+      resetLevel();
+    };
+  }, [resetNavigation, resetLevel]);
 
   // 컴포넌트 맵핑 객체
   const COMPONENTS = {

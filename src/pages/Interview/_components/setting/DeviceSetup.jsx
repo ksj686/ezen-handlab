@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import Button from "@/components/common/Button";
 import { useInterviewTabStore, useSetupNavigationStore } from "@/store/store";
+import MediaDeviceSelector from "./MediaDeviceSelector";
+
+const xlTextWrap = "text-zik-text/75 mb-2 text-lg font-bold";
+const smTextWrap = "list-disc space-y-2 pl-5 text-sm";
 
 const DeviceSetup = () => {
   const setTabSelect = useInterviewTabStore((state) => state.setTabSelect);
@@ -15,32 +19,26 @@ const DeviceSetup = () => {
   };
 
   return (
-    <div className="mx-auto flex w-[92%] flex-col items-center px-4 py-8">
-      <div className="text-zik-text mt-8 mb-8 text-[30px] font-bold">
+    <div className="mx-auto flex w-full flex-col items-center justify-center py-6">
+      <div className="text-zik-text mt-3 mb-5 text-2xl font-bold">
         연결된 기기를 확인하세요
       </div>
 
-      <div className="flex w-full flex-col gap-4 md:flex-row">
+      <div className="flex w-full gap-4">
         {/* Left side - Device guides */}
-        <div className="border-zik-border w-full rounded-lg border p-6 md:w-3/5">
-          <div className="mb-8">
-            <div className="text-zik-text/75 mb-3 text-[24px] font-bold">
-              마이크 / 카메라 가이드
-            </div>
-            <ul className="list-disc space-y-2 pl-5 text-[14px]/3.5">
+        <div className="border-zik-border w-4/7 rounded-xl border p-5">
+          <div className="mb-4">
+            <div className={xlTextWrap}>마이크 / 카메라 가이드</div>
+            <ul className={smTextWrap}>
               <li>마이크가 PC(노트북)에 연결되어 있는 지 확인해주세요.</li>
               <li>상단 팝업의 마이크 권한을 '허용'으로 선택해 주세요.</li>
               <li>영상은 녹화되어 분석결과 페이지에서 확인하실 수 있습니다.</li>
             </ul>
           </div>
-
-          <hr className="border-zik-border -mt-2 mb-2 border-t" />
-
-          <div className="mb-8">
-            <div className="text-zik-text/75 mb-3 text-[24px] font-bold">
-              소음
-            </div>
-            <ul className="list-disc space-y-2 pl-5 text-[14px]/3.5">
+          <hr className="border-zik-border mb-2 border-t" />
+          <div className="mb-4">
+            <div className={xlTextWrap}>소음</div>
+            <ul className={smTextWrap}>
               <li>조용한 공간에서 면접을 진행해 주세요.</li>
               <li>
                 이어폰 사용 시 마이크에 닿는 옷 또는 머리카락 때문에 소음이 생길
@@ -49,14 +47,10 @@ const DeviceSetup = () => {
               <li>다른 사람의 음성이 녹음되지 않도록 해주세요.</li>
             </ul>
           </div>
-
-          <hr className="border-zik-border -mt-2 mb-2 border-t" />
-
-          <div className="mb-8">
-            <div className="text-zik-text/75 mb-3 text-[24px] font-bold">
-              오류를 일으키는 주요원인
-            </div>
-            <ul className="list-disc space-y-2 pl-5 text-[14px]/3.5">
+          <hr className="border-zik-border mb-2 border-t" />
+          <div className="mb-4">
+            <div className={xlTextWrap}>오류를 일으키는 주요원인</div>
+            <ul className={smTextWrap}>
               <li>
                 마이크 사용 중 하울링(소리 증폭 현상)이 발생하면 소리가 커져서
                 음성 검출이 어려워질 수 있습니다.
@@ -65,14 +59,10 @@ const DeviceSetup = () => {
               <li>음성 전달에 영향을 미치는 마스크를 착용하지 말아 주세요.</li>
             </ul>
           </div>
-
-          <hr className="border-zik-border -mt-2 mb-2 border-t" />
-
+          <hr className="border-zik-border mb-2 border-t" />
           <div>
-            <div className="text-zik-text/75 mb-3 text-[24px] font-bold">
-              답변 주의사항
-            </div>
-            <ul className="list-disc space-y-2 pl-5 text-[14px]/3.5">
+            <div className={xlTextWrap}>답변 주의사항</div>
+            <ul className={smTextWrap}>
               <li>
                 소리가 작거나 발음이 부정확하면 음성 인식이 어려울 수 있습니다.
               </li>
@@ -85,31 +75,35 @@ const DeviceSetup = () => {
         </div>
 
         {/* Right side - Camera Preview */}
-        <div className="border-zik-border w-full rounded-lg border p-6 md:w-2/5">
-          <div className="bg-zik-border/50 mb-8 flex h-80 items-center justify-center rounded-lg">
+        {/* <div className="border-zik-border relative flex w-3/7 flex-col items-center gap-3 rounded-xl border p-3">
+          <div className="bg-zik-border/50 mb-4 flex aspect-square w-[80%] items-center justify-center rounded-xl">
             <p className="text-zik-text/70 text-xl">카메라 상태</p>
           </div>
 
-          <div className="relative">
-            <div className="flex items-center rounded-md border px-4 py-2">
-              <span className="text-zik-text flex-1">마이크</span>
+          <div className="flex w-full items-center justify-center gap-3">
+            <div className="flex w-4/6 items-center gap-3">
+              <span className="text-zik-text/75 text-xl font-bold text-nowrap">
+                마이크
+              </span>
+              <div className="border-zik-border h-12 w-full rounded-md border px-4 py-2"></div>
             </div>
-            <div className="absolute top-2 right-2 flex items-center">
-              <div className="mr-2 h-3 w-3 rounded-full bg-red-500"></div>
-              <span className="text-xs">연결실패</span>
+            <div className="flex items-center gap-2">
+              <div className="h-3 w-3 rounded-full bg-red-500"></div>
+              <span className="text-sm">연결실패</span>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="mt-5 flex gap-15">
-        <Button
-          color="gray"
-          disabled
-          className="pointer-events-none cursor-default"
-        >
-          이전
-        </Button>
-        <Button onClick={handleNext}>다음</Button>
+          <div className="absolute bottom-6 flex justify-center gap-15">
+            <Button
+              color="gray"
+              disabled
+              className="pointer-events-none cursor-default"
+            >
+              이전
+            </Button>
+            <Button onClick={handleNext}>다음</Button>
+          </div>
+        </div> */}
+        <MediaDeviceSelector />
       </div>
     </div>
   );
