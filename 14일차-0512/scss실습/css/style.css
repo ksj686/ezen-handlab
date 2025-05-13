@@ -1,0 +1,49 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.content-center {
+  max-width: 1260px;
+  background: rgba(255, 0, 0, 0.2);
+  margin: 0 auto;
+}
+
+header {
+  border-top: 3px solid #009223;
+}
+header .content-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .logo a {
+  color: #009223;
+  font-family: "돋움";
+  font-weight: 900;
+  font-size: 50px;
+}
+header nav #menu {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+header nav #menu li.menu a {
+  font-size: 18px;
+}
+header nav #menu li.menu a:hover {
+  color: #009223;
+}
+header nav #menu li.menu-first {
+  background-color: #ccc;
+}/*# sourceMappingURL=style.css.map */

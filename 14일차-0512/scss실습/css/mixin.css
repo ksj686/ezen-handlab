@@ -1,0 +1,29 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  background: #ccc;
+  font-size: 50px;
+  color: #333;
+  text-decoration: overline;
+}
+header .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+header .nav li a {
+  font-size: 18px;
+  color: #111;
+  text-decoration: underline;
+}
+
+section .list-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}/*# sourceMappingURL=mixin.css.map */

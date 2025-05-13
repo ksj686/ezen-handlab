@@ -1,0 +1,68 @@
+// 변수선언하기
+$메인컬러: #009223;
+$글자메인컬러: #222;
+$본문제목: 50px;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.content-center {
+    max-width: 1260px;
+    background: rgba(255, 0, 0, 0.2);
+    margin: 0 auto;
+}
+
+header {
+    border-top: 3px solid $메인컬러;
+    // 양쪽정렬
+    .content-center{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .logo {
+        a {
+            color: $메인컬러;
+
+            // font-family: "돋움";
+            // font-weight:bolder;
+            // font-size:30px;
+            font: {
+                family: "돋움";
+                weight: 900;
+                size: 50px;
+            }
+        }
+    }
+    nav{
+        #menu{
+            // 가운데정렬
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            li.menu{
+                a{
+                    font-size:18px;
+                    &:hover{
+                         color: $메인컬러;
+                    }
+                    // &:동작,&.클래스, 부모이름의 규칙적일때
+                }
+                &-first{
+                    background-color: #ccc;
+                }
+            }
+        }
+    }
+}

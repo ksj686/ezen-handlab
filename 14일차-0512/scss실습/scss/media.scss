@@ -1,0 +1,34 @@
+// header pc fixed -> mobile static
+//section pc 배경이 초록 ->mobile pink
+//제목 pc 5rem ->2rem으로 변경
+@mixin myPos($p:absolute,$top:null,$right:null,$bottom:null,$left:null){
+    position: $p;
+    left:$left;
+    right:$right;
+    top:$top;
+    bottom:$bottom;
+}
+// 반응형 
+@mixin mobile-screen{
+    @media screen and (max-width:767px){
+        @content;
+    }
+}
+header{
+    @include myPos($p:fixed);
+    width:100%;
+    background-color: pink;
+    @include mobile-screen{
+        @include myPos($p:static);
+    }
+}
+main{
+    section{
+        background-color: green;
+        height: 500px;
+        
+        @include mobile-screen{
+            background-color: pink;
+        }
+    }
+}

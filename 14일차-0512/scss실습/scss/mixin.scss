@@ -1,0 +1,40 @@
+// h1,ul>li>a, h2 공통 글자 크기, 글자색, 밑줄
+//배경색 다름
+// @mixin myText{
+//     font-size:18px;
+//     color:pink;
+//     text-decoration: underline;
+// }
+@mixin myText($글자크기,$글자색상,$밑줄:underline){
+    font-size: $글자크기;
+    color:$글자색상;
+    text-decoration: $밑줄;
+}
+
+@mixin myFlex($좌우정렬:space-between,$gap:null,$위아래정렬:center,$줄변경:null){
+    display: flex;
+    justify-content:$좌우정렬 ;
+    align-items: $위아래정렬;
+    gap:$gap;
+    flex-wrap: $줄변경;
+}
+header{
+    @include myFlex();
+    h1{
+        background: #ccc;
+        @include myText(50px,#333,overline);
+    }
+    .nav{
+        @include myFlex($gap:50px);
+        li{
+            a{
+                @include myText(18px,#111);
+            }
+        }
+    }
+}
+section{
+    .list-wrap{
+        @include myFlex($줄변경:wrap);
+    }
+}
