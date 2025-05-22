@@ -1,0 +1,50 @@
+.todo-wrap {
+  border: 5px solid dodgerblue;
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 50px;
+}
+
+.todo-list-wrap {
+  margin: 20px 0;
+}
+
+.todo-list-wrap #todo-form input {
+  line-height: 2.5;
+  text-indent: 10px;
+  width: 100%;
+  border-radius: 30px;
+}
+
+.todo-list > li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.todo-list > .lineThrough {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.todo-list > li div > button {
+  width: 24px;
+  height: 24px;
+}
+
+.todo-list > li div > button:first-child {
+  background: url(../images/check.svg);
+}
+.todo-list > li div > button:last-child {
+  background: url(../images/close.svg);
+}
+
+.remove-all > button {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 30px;
+  background: dodgerblue;
+  border: none;
+  color: white;
+}
