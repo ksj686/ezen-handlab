@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let person = {
+            name: "홍길동",
+            age: 18,
+            hobby: ["잠자기", "운동"]
+        }
+        console.log(person);
+        // 데이트를 전송용으로 사용하려면 문자열로 변환 json은 문자열 파일임
+        let json = JSON.stringify(person);
+        console.log(json)
+    </script>
+</body>
+
+</html>
