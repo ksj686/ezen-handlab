@@ -1,0 +1,28 @@
+.portSwiper .swiper-slide {
+  display: flex;
+  gap: 30px;
+}
+.portSwiper .swiper-slide img {
+  width: 100%;
+}
+.portSwiper .swiper-slide .text-box {
+  width: 40%;
+}
+.portSwiper .swiper-slide .text-box h3 {
+  font-size: 3rem;
+}
+.portSwiper .swiper-slide .text-box > p {
+  margin: 10px 0 30px;
+}
+.portSwiper .swiper-slide .text-box .btn-wrap ul {
+  display: flex;
+  gap: 10px;
+}
+.portSwiper .swiper-slide .text-box .btn-wrap ul li a {
+  display: inline;
+  padding: 5px 20px;
+  background: #222;
+  color: white;
+  border-radius: 30px;
+  text-transform: uppercase;
+}/*# sourceMappingURL=PortfolioSwiper.css.map */
