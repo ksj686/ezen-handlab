@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+TC&display=swap");
+
 $메인컬러: #646cff;
+$제목컬러: #e97fff;
 $메인글자: #333;
 $둥글기: 30px;
 
@@ -17,11 +20,17 @@ li {
   list-style: none;
 }
 
-@mixin myFlex($gap: 0) {
+body {
+  background: black;
+  color: white;
+}
+
+@mixin myFlex($gap: 0, $jc: space-between) {
   display: flex;
-  justify-content: space-between;
+  justify-content: $jc;
   align-items: center;
   gap: $gap;
+  flex-wrap: wrap;
 }
 
 .wrap {
@@ -32,6 +41,10 @@ li {
 
   header {
     line-height: 80px;
+    position: fixed;
+    width: 100%;
+    // border-bottom: 1px solid #ddd;
+
     .content-inner {
       div {
         @include myFlex();
@@ -39,19 +52,36 @@ li {
           @include myFlex(50px);
 
           li {
-            font-size: 1.13rem;
-            font-weight: bold;
+            font-size: 1.25rem;
+            font-weight: 600;
+            a {
+              color: white;
+            }
           }
         }
       }
     }
   }
 
-  .main {
+  .index {
     height: 100vh;
+
     @include myFlex();
     .content-inner {
-      @include myFlex();
+      @include myFlex(100px);
+    }
+  }
+
+  .main {
+    padding: 100px 0;
+  }
+
+  .skill-list {
+    margin-top: 100px;
+    @include myFlex(20px, start);
+
+    li {
+      width: calc(100% / 4 - 20px);
     }
   }
 

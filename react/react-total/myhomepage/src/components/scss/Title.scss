@@ -1,5 +1,14 @@
+@use "../../App.scss" as g;
+
 .titleBox {
   .title {
-    font-size: 4rem;
+    font-size: 6rem;
+    font-weight: 100;
+    color: g.$메인컬러;
+    font-family: "WDXL Lubrifont TC", sans-serif;
+  }
+
+  .subTitle {
+    font-size: 2rem;
   }
 }

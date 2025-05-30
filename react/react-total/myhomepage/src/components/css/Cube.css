@@ -10,6 +10,10 @@
   transform-style: preserve-3d;
   position: relative;
   animation: rotateCube 10s infinite linear;
+  animation-play-state: running;
+}
+.cube-wrap .cubes:hover {
+  animation-play-state: paused;
 }
 .cube-wrap .cubes .cube {
   width: 100%;
@@ -19,17 +23,16 @@
   justify-content: center;
   align-items: center;
   font-size: 4rem;
+  background-color: rgba(255, 255, 255, 0.8) !important;
 }
 .cube-wrap .cubes .front {
   background-color: rgba(255, 0, 0, 0.1);
   transform: translateZ(150px);
 }
 .cube-wrap .cubes .back {
-  background-color: rgba(255, 255, 0, 0.1);
   transform: rotateY(180deg) translateZ(150px);
 }
 .cube-wrap .cubes .left {
-  background-color: rgba(255, 255, 255, 0.1);
   transform: rotateY(-90deg) translateZ(150px);
 }
 .cube-wrap .cubes .right {

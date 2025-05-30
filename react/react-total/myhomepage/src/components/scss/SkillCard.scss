@@ -1,0 +1,64 @@
+@use "../../App.scss" as g;
+
+.skill-card {
+  &:hover {
+    .card-wrap {
+      transform: rotateY(180deg);
+    }
+  }
+
+  .card-wrap {
+    border: 1px solid #ccc;
+    border-radius: g.$둥글기;
+    padding: g.$둥글기;
+    position: relative;
+    transform: perspective(800px) rotateY(0);
+    transform-style: preserve-3d;
+    transition: 0.5s;
+    background: white;
+
+    > div {
+      backface-visibility: hidden;
+      @include g.myFlex(0, center);
+    }
+
+    .card-img {
+      img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+    }
+
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: g.$메인컬러;
+      top: 0;
+      left: 0;
+      transform: rotateY(180deg);
+      flex-direction: column;
+      color: white;
+      border-radius: g.$둥글기;
+
+      .card-title {
+        font-size: 3rem;
+        text-transform: uppercase;
+      }
+      .card-desc {
+      }
+      .card-per {
+        font-size: 2.5rem;
+      }
+    }
+
+    .num {
+      position: absolute;
+      top: -30px;
+      left: 0;
+      font-size: 3rem;
+    }
+  }
+}

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+TC&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -13,39 +14,67 @@ li {
   list-style: none;
 }
 
+body {
+  background: black;
+  color: white;
+}
+
 .wrap .content-inner {
   max-width: 1400px;
   margin: 0 auto;
 }
 .wrap header {
   line-height: 80px;
+  position: fixed;
+  width: 100%;
 }
 .wrap header .content-inner div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0;
+  flex-wrap: wrap;
 }
 .wrap header .content-inner div ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 50px;
+  flex-wrap: wrap;
 }
 .wrap header .content-inner div ul li {
-  font-size: 1.13rem;
-  font-weight: bold;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
-.wrap .main {
+.wrap header .content-inner div ul li a {
+  color: white;
+}
+.wrap .index {
   height: 100vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0;
+  flex-wrap: wrap;
 }
-.wrap .main .content-inner {
+.wrap .index .content-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0;
+  gap: 100px;
+  flex-wrap: wrap;
+}
+.wrap .main {
+  padding: 100px 0;
+}
+.wrap .skill-list {
+  margin-top: 100px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.wrap .skill-list li {
+  width: calc(25% - 20px);
 }/*# sourceMappingURL=App.css.map */

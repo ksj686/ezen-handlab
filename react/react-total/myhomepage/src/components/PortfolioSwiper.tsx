@@ -81,7 +81,6 @@ const PortfolioSwiper = () => {
             </div>
           </SwiperSlide>
         ))}
-        ...
       </Swiper>
     </div>
   );

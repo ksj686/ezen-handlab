@@ -14,19 +14,12 @@ li {
   list-style: none;
 }
 
-body {
-  background: black;
-  color: white;
-}
-
 .wrap .content-inner {
   max-width: 1400px;
   margin: 0 auto;
 }
 .wrap header {
   line-height: 80px;
-  position: fixed;
-  width: 100%;
 }
 .wrap header .content-inner div {
   display: flex;
@@ -43,11 +36,8 @@ body {
   flex-wrap: wrap;
 }
 .wrap header .content-inner div ul li {
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-.wrap header .content-inner div ul li a {
-  color: white;
+  font-size: 1.13rem;
+  font-weight: bold;
 }
 .wrap .index {
   height: 100vh;
@@ -70,7 +60,7 @@ body {
 .wrap .skill-list {
   margin-top: 100px;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
@@ -78,35 +68,7 @@ body {
 .wrap .skill-list li {
   width: calc(25% - 20px);
 }
-.portSwiper .swiper-slide {
-  display: flex;
-  gap: 30px;
-}
-.portSwiper .swiper-slide img {
-  width: 100%;
-  border-radius: 30px;
-}
-.portSwiper .swiper-slide .text-box {
-  width: 40%;
-}
-.portSwiper .swiper-slide .text-box h3 {
-  font-size: 3rem;
-}
-.portSwiper .swiper-slide .text-box > p {
-  margin: 10px 0 30px;
-}
-.portSwiper .swiper-slide .text-box .btn-wrap ul {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.portSwiper .swiper-slide .text-box .btn-wrap ul li a {
-  display: inline-block;
-  padding: 5px 20px;
-  background: #222;
-  color: white;
-  border-radius: 30px;
-  text-transform: uppercase;
-}/*# sourceMappingURL=PortfolioSwiper.css.map */
+.todoApp .todoForm input {
+  flex: 1;
+  line-height: 40px;
+}/*# sourceMappingURL=todolist.css.map */

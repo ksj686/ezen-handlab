@@ -5,10 +5,10 @@ import Cube from "../components/Cube";
 
 const Main = () => {
   return (
-    <div className="main">
+    <div className="main index">
       <div className="content-inner">
         <BigTitle
-          title="BACK END"
+          title="FULL STACK"
           desTitle="DEVELOPER"
           subTitle="KIM SE JOON"
         />
