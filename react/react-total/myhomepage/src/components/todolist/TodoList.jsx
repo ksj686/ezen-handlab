@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import TodoItem from "./TodoItem";
 import { TodoContext } from "../../context/TodoContext";
+import "../scss/todolist.scss";
 
 const TodoList = () => {
   const { todos, removeAll } = useContext(TodoContext);

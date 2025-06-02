@@ -1,22 +1,49 @@
 @use "../../App.scss" as g;
 
 .todoApp {
+  // border: 1px solid red;
+  max-width: 600px;
+  margin: 50px auto;
+
   .todoForm {
+    display: flex;
+    gap: 10px;
+
     input {
       flex: 1;
       line-height: 40px;
     }
     button {
+      width: 20%;
+      background-color: g.$메인컬러;
+      color: white;
     }
   }
   .todoList {
+    margin-top: 20px;
+
     button {
+      background: white;
+      border: none;
+      padding: 10px 20px;
     }
     ul {
+      margin-bottom: 20px;
       li {
+        display: flex;
+        justify-content: space-between;
+        line-height: 3;
+        border-bottom: 1px solid #555;
+
         span {
+          &.line {
+            text-decoration: line-through;
+            color: #666;
+          }
         }
         button {
+          background: none;
+          color: white;
         }
       }
     }

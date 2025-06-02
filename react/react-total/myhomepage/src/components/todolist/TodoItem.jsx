@@ -11,7 +11,7 @@ const TodoItem = ({ todo }) => {
       >
         {todo.text}
       </span>
-      <button onClick={() => deleteTodo(todo.id)}>삭제</button>
+      <button onClick={() => deleteTodo(todo.id)}>X</button>
     </li>
   );
 };

@@ -28,6 +28,9 @@ body {
   position: fixed;
   width: 100%;
 }
+.wrap header .logo a {
+  color: white;
+}
 .wrap header .content-inner div {
   display: flex;
   justify-content: space-between;
@@ -77,4 +80,30 @@ body {
 }
 .wrap .skill-list li {
   width: calc(25% - 20px);
+}
+.wrap .about-wrap {
+  font-size: 1.25rem;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrap .about-wrap .big-text {
+  font-size: 5rem;
+}
+.wrap .about-wrap .photo-wrap {
+  font-size: 35rem;
+  line-height: 1;
+  text-shadow: 10px 10px 0 #646cff;
+}
+.wrap .contact-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.wrap .contact-wrap form input,
+.wrap .contact-wrap form textarea,
+.wrap .contact-wrap form button {
+  width: 100%;
+  line-height: 40px;
+  padding: 0 10px;
 }/*# sourceMappingURL=App.css.map */

@@ -25,7 +25,7 @@ const SkillCard = ({
           <p className="card-desc">{desc}</p>
           <p className="card-per">{percent}%</p>
         </div>
-        <div className="num">0{id + 1}</div>
+        {/* <div className="num">0{id + 1}</div> */}
       </div>
     </div>
   );

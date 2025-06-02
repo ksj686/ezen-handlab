@@ -45,9 +45,15 @@ body {
     width: 100%;
     // border-bottom: 1px solid #ddd;
 
+    .logo {
+      a {
+        color: white;
+      }
+    }
     .content-inner {
       div {
         @include myFlex();
+
         ul {
           @include myFlex(50px);
 
@@ -82,6 +88,38 @@ body {
 
     li {
       width: calc(100% / 4 - 20px);
+    }
+  }
+
+  .about-wrap {
+    font-size: 1.25rem;
+    font-weight: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .big-text {
+      font-size: 5rem;
+    }
+
+    .photo-wrap {
+      font-size: 35rem;
+      line-height: 1;
+      text-shadow: 10px 10px 0 #646cff;
+    }
+  }
+
+  .contact-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+
+    form {
+      input,
+      textarea,
+      button {
+        width: 100%;
+        line-height: 40px;
+        padding: 0 10px;
+      }
     }
   }
 
