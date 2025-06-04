@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -34,5 +34,27 @@
   }
   to {
     transform: rotate(360deg);
+  }
+} */
+
+li {
+  list-style: none;
+}
+
+.fakeStore {
+  ul {
+    display: flex;
+    gap: 30px;
+  }
+
+  .goods-list {
+    flex-wrap: wrap;
+
+    li {
+      width: calc(25% - 30px);
+      img {
+        width: 100%;
+      }
+    }
   }
 }
