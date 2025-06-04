@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import WeatherContext from "./WeatherContext";
 
 // 선택할 국가
@@ -11,7 +13,7 @@ const countries = {
 };
 
 // 날씨 apu
-const API_KEY = "23cf5e1bd5401b1f7c667668f8f72c23";
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 const WeatherProvider = ({ children }) => {
   // 나라 선택
@@ -29,7 +31,7 @@ const WeatherProvider = ({ children }) => {
             params: {
               q: city,
               appid: API_KEY,
-              units: "matric",
+              units: "metric",
               lang: "kr",
             },
           }
@@ -44,7 +46,13 @@ const WeatherProvider = ({ children }) => {
 
   return (
     <WeatherContext.Provider
-      value={{ selectCountry, setSelectCountry, weatherData, setWeatherData }}
+      value={{
+        selectCountry,
+        setSelectCountry,
+        weatherData,
+        setWeatherData,
+        countries,
+      }}
     >
       {children}
     </WeatherContext.Provider>
