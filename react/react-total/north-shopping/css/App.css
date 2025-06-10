@@ -6,4 +6,22 @@
 
 .container {
   padding: 90px 0;
+}
+.container .btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.container .btn button {
+  display: block;
+  padding: 10px 30px;
+  border: 1px solid black;
+}
+.container .btn .white-btn {
+  border: 1px solid #ccc;
+}
+.container .btn .black-btn {
+  background: black;
+  color: white;
 }/*# sourceMappingURL=App.css.map */

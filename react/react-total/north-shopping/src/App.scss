@@ -25,4 +25,22 @@ $섹션부제목: 1.25rem;
     .sub-title {
     }
   }
+
+  .btn {
+    @include myFlex($gap: 10px);
+    button {
+      display: block;
+      padding: 10px 30px;
+      border: 1px solid black;
+    }
+
+    .white-btn {
+      border: 1px solid #ccc;
+    }
+
+    .black-btn {
+      background: black;
+      color: white;
+    }
+  }
 }

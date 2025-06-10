@@ -1,0 +1,19 @@
+.content-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.container {
+  padding: 90px 0;
+}
+.title-box {
+  text-align: center;
+  padding: 50px 0;
+}
+.title-box .title {
+  font-size: 2.5rem;
+}
+.title-box .sub-Title {
+  font-size: 1.25rem;
+}/*# sourceMappingURL=title.css.map */

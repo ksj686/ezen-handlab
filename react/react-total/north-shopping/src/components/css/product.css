@@ -1,0 +1,56 @@
+.content-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.container {
+  padding: 90px 0;
+}
+.container .btn button {
+  display: block;
+  padding: 10px 30px;
+  border: 1px solid black;
+}
+.container .btn .white-btn {
+  border: 1px solid #ccc;
+}
+.goods-list .img-box {
+  border: 1px solid #ccc;
+  padding: 50px 30px;
+  text-align: center;
+}
+.goods-list .img-box img {
+  height: 200px;
+}
+.goods-list .text-box {
+  padding: 10px 0;
+}
+.goods-list .text-box h3 {
+  font-weight: 400;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.goods-list .text-box > div {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.goods-list .text-box > div strong {
+  color: #e60023;
+}
+.goods-list .text-box > div .price-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.goods-list .text-box > div .sale-price {
+  font-size: 1.25rem;
+}
+.goods-list .text-box > div .price {
+  text-decoration: line-through;
+}/*# sourceMappingURL=product.css.map */

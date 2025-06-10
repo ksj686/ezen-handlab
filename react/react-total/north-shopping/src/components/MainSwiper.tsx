@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 
 const MainSwiper = () => {
   return (
-    <div>
+    <div className="main-swiper">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
         navigation

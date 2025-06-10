@@ -1,11 +1,31 @@
-import React from 'react'
+import React from "react";
+import { Product } from "../types/ProductType";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
 
-const SectionSwiper = () => {
+import "swiper/css";
+import "swiper/css/navigation";
+import { Link } from "react-router-dom";
+import ProductCard from "./ProductCard";
+
+const SectionSwiper = ({ category }: { category: Product[] }) => {
   return (
-    <div className='goods-list'>
-      슬라이드
+    <div className="goods-list">
+      <Swiper
+        modules={[Autoplay, Navigation]}
+        slidesPerView={4}
+        spaceBetween={24}
+      >
+        {category.map((item) => (
+          <SwiperSlide>
+            <Link to={`/products/${item.id}`}>
+              <ProductCard sendItem={item} />
+            </Link>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
-  )
-}
+  );
+};
 
-export default SectionSwiper
+export default SectionSwiper;
