@@ -36,9 +36,13 @@
     ul {
       li {
         padding: 10px 20px;
-        border: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
         @include g.myFlex($gap: 10px);
       }
+    }
+
+    &.cart-bottom {
+      padding: 20px;
     }
   }
 }

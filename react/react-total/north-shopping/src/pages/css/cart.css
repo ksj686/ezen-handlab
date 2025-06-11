@@ -7,6 +7,12 @@
 .container {
   padding: 90px 0;
 }
+.container .btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
 .container .btn button {
   display: block;
   padding: 10px 30px;
@@ -15,6 +21,32 @@
 .container .btn .white-btn {
   border: 1px solid #ccc;
 }
+.container .btn .black-btn {
+  background: black;
+  color: white;
+}
+
+.swiper {
+  padding-bottom: 30px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  z-index: 100;
+}
+
+.goods-list-big {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.goods-list-big .big-img {
+  width: 45%;
+}
+.goods-list-big .big-swiper {
+  width: 50%;
+}
+
 .cart-wrap {
   border-top: 5px solid black;
 }
@@ -52,9 +84,12 @@
 }
 .cart-wrap > div ul li {
   padding: 10px 20px;
-  border: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+}
+.cart-wrap > div.cart-bottom {
+  padding: 20px;
 }/*# sourceMappingURL=cart.css.map */

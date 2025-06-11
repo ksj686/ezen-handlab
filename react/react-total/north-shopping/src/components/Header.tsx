@@ -16,7 +16,10 @@ const menus: MenuItem[] = [
 ];
 
 const Header = () => {
-  const { cartCount } = useStore();
+  const { cartCount, currentUser, logout } = useStore();
+  const username = currentUser?.includes("@")
+    ? currentUser.split("@")[0]
+    : currentUser;
 
   return (
     <header>
@@ -39,18 +42,37 @@ const Header = () => {
         </div>
         <div className="header-right">
           <ul>
-            <li>
-              <Link to="/login">
-                <img src="./images/loginPassword.png" />
-                <p>LOGIN</p>
-              </Link>
-            </li>
-            <li>
-              <Link to="/signup">
-                <img src="./images/loginMember.png" />
-                <p>MEMBER</p>
-              </Link>
-            </li>
+            {currentUser ? (
+              <>
+                <li>
+                  <Link to="/" onClick={logout}>
+                    <img src="./images/loginPassword.png" />
+                    <p>LOGOUT</p>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/member">
+                    <img src="./images/loginMember.png" />
+                    <p>{username}</p>
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">
+                    <img src="./images/loginPassword.png" />
+                    <p>LOGIN</p>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/signup">
+                    <img src="./images/loginMember.png" />
+                    <p>MEMBER</p>
+                  </Link>
+                </li>
+              </>
+            )}
             <li>
               <Link to="/cart">
                 <img src="./images/cart.png" alt="" />

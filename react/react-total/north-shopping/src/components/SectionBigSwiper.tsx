@@ -1,21 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import ProductCard from "./ProductCard";
 import { Product } from "../types/ProductType";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, Grid, Navigation, Scrollbar } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import { Link } from "react-router-dom";
-import ProductCard from "./ProductCard";
+import "swiper/css/grid";
+import "swiper/css/scrollbar";
 
-const SectionSwiper = ({ category }: { category: Product[] }) => {
+const SectionBigSwiper = ({ category }: { category: Product[] }) => {
   return (
     <div className="goods-list">
       <Swiper
-        modules={[Autoplay, Navigation]}
-        slidesPerView={4}
+        modules={[Grid, Autoplay, Navigation, Scrollbar]}
+        slidesPerView={3}
         spaceBetween={24}
-        navigation
+        grid={{ rows: 2, fill: "row" }}
+        scrollbar={{ draggable: true }}
+        // navigation
       >
         {category.map((item) => (
           <SwiperSlide>
@@ -29,4 +33,4 @@ const SectionSwiper = ({ category }: { category: Product[] }) => {
   );
 };
 
-export default SectionSwiper;
+export default SectionBigSwiper;

@@ -24,4 +24,25 @@
 .container .btn .black-btn {
   background: black;
   color: white;
+}
+
+.swiper {
+  padding-bottom: 30px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  z-index: 100;
+}
+
+.goods-list-big {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.goods-list-big .big-img {
+  width: 45%;
+}
+.goods-list-big .big-swiper {
+  width: 50%;
 }/*# sourceMappingURL=App.css.map */

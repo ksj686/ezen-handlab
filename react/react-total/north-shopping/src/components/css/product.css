@@ -7,6 +7,12 @@
 .container {
   padding: 90px 0;
 }
+.container .btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
 .container .btn button {
   display: block;
   padding: 10px 30px;
@@ -15,13 +21,37 @@
 .container .btn .white-btn {
   border: 1px solid #ccc;
 }
+.container .btn .black-btn {
+  background: black;
+  color: white;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  z-index: 100;
+}
+
+.goods-list-big {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.goods-list-big .big-img {
+  width: 45%;
+}
+.goods-list-big .big-swiper {
+  width: 50%;
+}
+
 .goods-list .img-box {
   border: 1px solid #ccc;
-  padding: 50px 30px;
+  padding: 20px 40px;
   text-align: center;
 }
 .goods-list .img-box img {
   height: 200px;
+  width: 100%;
+  object-fit: contain;
 }
 .goods-list .text-box {
   padding: 10px 0;
