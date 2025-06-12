@@ -13,6 +13,11 @@ export interface Product {
   };
 }
 
+// 수량추가
+export interface CartProduct extends Product {
+  quantity: number;
+}
+
 export interface User {
   email: string;
   userId: string;
@@ -30,16 +35,19 @@ export interface LoginUser {
 }
 
 export interface CartStore {
-  items: Product[];
-  cartItems: Product[];
+  items: CartProduct[];
+  cartItems: CartProduct[];
   cartCount: number;
   totalPrice: number;
   currentUser: string | null;
 
   fetchItems: () => void;
-  getItemCategory: (category: string) => Product[];
+  getItemCategory: (category: string) => CartProduct[];
   addCart: (product: Product) => void;
   removeCart: (id: number) => void;
+
+  increaseQuantity: (id: number) => void;
+  decreaseQuantity: (id: number) => void;
   memberUser: (user: User, navigate?: (path: string) => void) => void;
   login: (user: LoginUser, navigate?: (path: string) => void) => void;
   logout: () => void;

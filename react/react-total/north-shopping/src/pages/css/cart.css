@@ -92,4 +92,13 @@
 }
 .cart-wrap > div.cart-bottom {
   padding: 20px;
+}
+.cart-wrap .amount-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-wrap .amount-wrap button {
+  border: none !important;
+  font-size: 1.25rem;
 }/*# sourceMappingURL=cart.css.map */
