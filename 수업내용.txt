@@ -1,0 +1,4 @@
+- Typescript
+- northface 사이트 프론트엔드 클론코딩
+- node.js 개발환경 설정
+- MySQL 설치 및 연동
