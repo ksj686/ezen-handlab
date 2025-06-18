@@ -1,0 +1,160 @@
+-- 주석
+/*
+	본문 주석
+    DB => SQL (Structured Query Language)
+*/
+
+use eduDB;
+desc members;
+select * from members;
+
+-- 데이터 삽입 : insert 문
+/* DML(Data Manipulation Language) : INSERT, DELETE, UPDATE
+DQL(Data Query Language) : Select
+insert into 테이블명(컬럼명1, 컬럼명2, ... )
+values (값1, 값2, ...)
+varchar, char, text, ... 홑따옴표로 감싸서 값을 넣는다 '값'
+*/
+
+insert into members (name, email, passwd)
+values ('홍길동','111','hong@a.b.c');
+
+-- TCL (Transaction Control L) MySQL은 auto commit 설정이 되어있음
+commit; -- 메모리에 보관하던 데이터를 DB에 영구히 저장 (기본적으로 auto commit)
+rollback; -- 이전에 하던 작업을 취소
+
+-- 데이터 조회 : select 문
+/*
+select 컬럼1, 컬럼2, ... from 테이블명
+[where 조건]
+*/
+select id, name, email, indate, passwd, refreshtoken from members;
+select * from members;
+
+-- 3명 정도 가입시키기
+
+insert into members (name, email, passwd, role)
+values ('김철수','kim@naver.com','222','USER'),
+('김관리','admin@navre.com','111','ADMIN'),
+('이영희','lee@gmail.com','333','USER');
+
+select * from members where role = "ADMIN";
+
+-- 회원번호가 2번인 회원의 ID, NAME, INDATE를 보여주세요
+select * from members where id = 2;
+-- 이름이 홍길동인 회원 정보를 보여주세요
+select * from members where name = '홍길동';
+-- 이름에 김씨 성을 가진 회원정보 보여주세요
+select * from members where name like '김%';
+
+-- email에 com자를 가진 회원정보
+select * from members where email like '%com%';
+
+-- 이름에 김자가 들어가고 role이 ADMIN인 회원정보
+-- => and 연산자
+select * from members where name like '%김%' and role='ADMIN';
+
+-- 이름에 김자가 들어가거나 role이 ADMIN인 회원정보
+-- => or 연산자
+select * from members where name like '%김%' or role='ADMIN';
+
+-- 정렬, 제한
+-- 회원의 이름 가나다순으로 보여주세요
+-- order by 컬럼명 asc (오름차순) | desc(내림차순)
+
+select * from members 
+order by name asc;
+
+-- role 오름차순, 같을경우 indate 내림차순
+select * from members
+order by role asc, indate desc;
+
+-- 이메일에 .com 이 포함된 회원들을 보여주되 등록일 내림차순으로
+-- WGHO 순서
+-- where > group by > having > order by 순서
+select * from members
+where email like '%.com'
+order by indate desc;
+
+-- 가장 오래전에 등록한 회원 2명만 보여주세요
+select id, name, indate from members
+order by indate asc limit 2;
+
+
+-- 집계 함수
+-- 전체 회원수를 보여주세요
+select count(id) from members;
+select count(*) from members;
+-- 일반 user가 몇명인지 보여주세요
+
+insert into members (name, email, passwd, role)
+values ('홍철수','hong2@naver.com','222','USER'),
+('최관리','admin@a.b.c','111','ADMIN'),
+('이민정','lee2@gmail.com','333','USER');
+
+
+
+select * from members;
+update members
+set name = '최치열', email='master@a.b.c', passwd=222
+where id = 9;
+
+-- 5번 메일의 값을 'hong@a.b.c'로 수정 ==> 에러alter
+update members set email = 'hong3@a.b.c'
+where name='홍철수';
+
+
+-- delete 문
+/*
+delete from 테이블; => 모든 레코드가 삭제됨
+delete from 테이블 where 조건;
+*/ 
+
+delete from members where id = 8;
+select * from members;
+
+-- posts 테이블 생성
+drop table posts;
+create table if not exists posts(
+	id int auto_increment primary key, -- 글번호
+	writer varchar(100) not null, -- 작성자
+	title varchar(200) not null, -- 글제목
+    content text, -- 글내용
+	attach varchar(255), -- 첨부파일명
+	wdate datetime default current_timestamp,	-- 작성일
+    -- 외래키 제약조건 (members의 email을 writer가 참조하도록)
+    foreign key (writer) references members(email)
+    on delete cascade
+    -- 회원정보를 삭제하면 게시글도 같이 삭제되는 옵션 on delete cascade
+);
+
+-- posts에 글 쓰기
+insert into posts (writer, title, content)
+values ('kim@naver.com', 'SQL 정리', 'DML 문장 복습');
+
+select * from posts;
+
+-- join 문 사용
+
+/* 
+select 
+from 테이블1 a 별칭
+join 테이블2 b
+on a.pk = b.pk
+*/
+
+select m.name, m.email, p.writer, p.title, wdate, p.id as '글번호'
+from members m join posts p
+on m.email = p.writer
+order by p.id desc;
+
+select count(id) from members;
+
+select distinct writer from posts;
+
+-- 작성자별로 게시글수가 3개 이상되는 통계치만 보여주도록
+-- group by 절에 조건을 부여할 때는 having 절을 이용
+select writer, count(id) 
+from posts 
+group  by writer
+having count(id) >= 3;
