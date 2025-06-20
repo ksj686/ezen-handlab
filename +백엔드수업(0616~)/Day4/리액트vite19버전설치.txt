@@ -1,0 +1,62 @@
+npm create vite@latest best-app --template react
+
+cd best-app
+npm install
+npm run dev
+
+==>브라우저 열어서 http://localhost:5173/ 입력
+화면 확인
+--------------------------------
+터미널 Ctrl+C
+아래 설치
+npm i bootstrap react-bootstrap react-icons
+
+npm i react-router-dom axios 
+
+실행 명령어
+npm run dev
+==========================
+React쪽
+[1] requestLogin()함수 완성 하기
+
+
+백엔드 쪽
+/api/auth/login
+/api/auth/logout
+
+/api/auth ====loginRouter
+[2] loginRouter 만들기--userController.login()로 연결
+===================================
+과제란에 올리기
+[1] 회원 관리 관리자 페이지 만들기
+[2] MyPage 컴포넌트 만들기 (회원정보 수정/회원 탈퇴)
+2월 24일(월)까지 제출
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
