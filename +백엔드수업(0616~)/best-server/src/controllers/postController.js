@@ -15,7 +15,7 @@ exports.createPost = async (req, res) => {
     // const postData = { writer, title, content };
 
     const [result] = await pool.query(sql, postData);
-    console.log(result);
+    console.log("result", result);
 
     res.status(201).json({ message: "Post created", postId: result.insertId }); // 새로운 데이터 생성은 보통 201
   } catch (error) {

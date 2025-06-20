@@ -26,7 +26,7 @@ export const usePostStore = create<PostState>((set) => ({
         totalCount: data.totalCount,
       });
     } catch (error) {
-      alert("목록 가져오기 실패: " + (error as Error).message);
+      console.error("목록 가져오기 실패: " + (error as Error).message);
     }
   },
 }));
