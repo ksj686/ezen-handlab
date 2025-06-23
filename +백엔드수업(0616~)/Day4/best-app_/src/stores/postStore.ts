@@ -9,20 +9,32 @@ import { apiFetchPostList, fetchPostById, apiDeletePost } from "../api/postApi";
 interface PostState {
   postList: Post[]; // 글 목록
   totalCount: number; // 총 게시글 수
+  totalPages: number; // 총 페이지 수
+  page: number; // 현재 보여줄 페이지 번호
+  size: number;
   post: Post | null; // 특정 게시글
 
+  setPage: (page: number) => void; // 페이지 변경할때
   fetchPostList: () => Promise<void>;
   fetchPostById: (id: string) => Promise<void>;
   deletePost: (id: string) => Promise<boolean>;
 }
-export const usePostStore = create<PostState>((set) => ({
+
+// get은 state값 얻어올때 쓰인다
+export const usePostStore = create<PostState>((set, get) => ({
   postList: [],
   totalCount: 0,
+  totalPages: 0,
+  page: 1, // 1페이지를 기본 값
+  size: 3, // 서버에서 정해준 값
+  setPage: (page: number) => set({ page: page }),
+
   post: null,
   fetchPostList: async () => {
+    const { page } = get(); // get()함수로 page state값 가져오기
     try {
       //api호출==>반환해주는 목록,게시글수를 set
-      const data = await apiFetchPostList();
+      const data = await apiFetchPostList(page);
 
       set({
         postList: data.data,

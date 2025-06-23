@@ -13,6 +13,7 @@ const storage = multer.diskStorage({
     // 콜백함수에 업로드할 파일의 저장 경로를 전달
   },
   filename: function (req, file, callback) {
+    //한글 파일명 안깨지도록
     file.originalname = Buffer.from(file.originalname, "latin1").toString(
       "utf8"
     );
@@ -33,6 +34,9 @@ router.get("/", postController.listPost);
 router.post("/", upMulter.single("file"), postController.createPost); // 첨부파일이 하나일땐 single, 여러개일땐 array
 
 router.get("/:id", postController.viewPost);
+
 router.delete("/:id", postController.deletePost);
+
+router.put("/:id", upMulter.single("file"), postController.updatePost);
 
 module.exports = router;

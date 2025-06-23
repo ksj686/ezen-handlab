@@ -25,10 +25,10 @@ const PostView: React.FC = () => {
 
     const result = await deletePost(id);
     if (result) {
-      alert("삭제 성공");
-      // navigate('/posts')
+      // alert("삭제 성공");
+      navigate("/posts");
     } else {
-      alert("삭제 실패");
+      alert("삭제 실패 - 해당 글이 존재x");
     }
   };
   if (!post) return <div className=""> Loading...</div>;

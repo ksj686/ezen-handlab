@@ -6,6 +6,9 @@ const PostList: React.FC = () => {
   const fetchPostList = usePostStore((s) => s.fetchPostList);
   const postList = usePostStore((s) => s.postList);
   const totalCount = usePostStore((s) => s.totalCount);
+  const totalPages = usePostStore((s) => s.totalPages);
+  const page = usePostStore((s) => s.page);
+  const setPage = usePostStore((s) => s.setPage);
 
   useEffect(() => {
     fetchPostList();
@@ -46,7 +49,18 @@ const PostList: React.FC = () => {
         </div>
       ))}
       {/* 페이지 네비게이션 자리 ----------- */}
-      <div></div>
+      <div>
+        {/* for(let i = 1; i <totalPage; i++)<button>i</button> */}
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+          <button
+            key={n}
+            onClick={() => setPage(n)}
+            className="btn btn-outline-primary mx-1"
+          >
+            {n}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
