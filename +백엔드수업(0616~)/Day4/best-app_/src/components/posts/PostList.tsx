@@ -12,11 +12,28 @@ const PostList: React.FC = () => {
 
   useEffect(() => {
     fetchPostList();
-  }, []);
+  }, [page]);
+
+  const pageBlock = 5;
+  const startPage = Math.floor((page - 1) / pageBlock) * pageBlock + 1;
+  const endPage = Math.min(startPage + (pageBlock - 1), totalPages);
+  /**
+   * 페이지 블럭 처리 위한 연산
+   * Prev [1][2][3][4][5] Next|Prev [6][7][8][9][10] Next |Prev [11][12][13][14][15] Next
+   *
+   * page         pageBlock           startPage           endPage
+   * 1~5              5                   1               5
+   * 6~10                                 6               10
+   * 11~15                                11              15
+   * startPage = Math.floor( (page-1)/pageBlock  ) * pageBlock +1;
+   * endPage = Math.min(startPage + (pageBlock-1), totalPages)
+   */
 
   return (
     <div className="post-list">
-      <h3>총 게시글 수: {totalCount} 개</h3>
+      <h3>
+        총 게시글 수: {totalCount} 개, {page} page/ {totalPages} pages
+      </h3>
       {postList.map((post, index) => (
         <div
           key={post.id ?? index}
@@ -49,17 +66,38 @@ const PostList: React.FC = () => {
         </div>
       ))}
       {/* 페이지 네비게이션 자리 ----------- */}
-      <div>
+      <div className="text-center">
         {/* for(let i = 1; i <totalPage; i++)<button>i</button> */}
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+        {startPage > 1 && (
+          <button
+            onClick={() => setPage(startPage - 1)}
+            className="btn btn-outline-primary mx-1"
+          >
+            Prev
+          </button>
+        )}
+        {Array.from(
+          { length: endPage - startPage + 1 },
+          (_, i) => i + startPage
+        ).map((n) => (
           <button
             key={n}
             onClick={() => setPage(n)}
-            className="btn btn-outline-primary mx-1"
+            className={`btn ${
+              n === page ? "btn-primary" : "btn-outline-primary"
+            }   mx-1`}
           >
             {n}
           </button>
         ))}
+        {endPage < totalPages && (
+          <button
+            onClick={() => setPage(endPage + 1)}
+            className="btn btn-outline-primary mx-1"
+          >
+            Next
+          </button>
+        )}
       </div>
     </div>
   );

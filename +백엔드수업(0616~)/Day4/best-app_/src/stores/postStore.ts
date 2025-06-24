@@ -4,7 +4,11 @@ postFormStore.ts: post 글쓰기/글수정에 필요한 폼 입력 상태 관리
 */
 import { create } from "zustand";
 import type { Post } from "../components/posts/types/Post";
-import { apiFetchPostList, fetchPostById, apiDeletePost } from "../api/postApi";
+import {
+  apiFetchPostList,
+  apiFetchPostById,
+  apiDeletePost,
+} from "../api/postApi";
 
 interface PostState {
   postList: Post[]; // 글 목록
@@ -15,7 +19,7 @@ interface PostState {
   post: Post | null; // 특정 게시글
 
   setPage: (page: number) => void; // 페이지 변경할때
-  fetchPostList: () => Promise<void>;
+  fetchPostList: () => Promise<void>; //글목록 가져오기
   fetchPostById: (id: string) => Promise<void>;
   deletePost: (id: string) => Promise<boolean>;
 }
@@ -27,9 +31,8 @@ export const usePostStore = create<PostState>((set, get) => ({
   totalPages: 0,
   page: 1, // 1페이지를 기본 값
   size: 3, // 서버에서 정해준 값
-  setPage: (page: number) => set({ page: page }),
-
   post: null,
+  setPage: (page: number) => set({ page: page }),
   fetchPostList: async () => {
     const { page } = get(); // get()함수로 page state값 가져오기
     try {
@@ -39,6 +42,7 @@ export const usePostStore = create<PostState>((set, get) => ({
       set({
         postList: data.data,
         totalCount: data.totalCount,
+        totalPages: data.totalPages,
       });
     } catch (error) {
       alert("목록 가져오기 실패: " + (error as Error).message);
@@ -46,7 +50,7 @@ export const usePostStore = create<PostState>((set, get) => ({
   },
   fetchPostById: async (id) => {
     try {
-      const post = await apiFetchPostList(id);
+      const post = await apiFetchPostById(id);
       set({ post });
     } catch (error) {
       alert("글 내용 보기 실패: " + (error as Error).message);

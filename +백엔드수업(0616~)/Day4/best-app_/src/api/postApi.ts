@@ -8,10 +8,8 @@ export interface PostResponse {
   totalPages: number;
 }
 // ----post 목록 가져오기---------------
-export const apiFetchPostList = async (params: {
-  page: number;
-}): Promise<PostResponse> => {
-  const response = await axiosInstance.get("/posts");
+export const apiFetchPostList = async (page: number): Promise<PostResponse> => {
+  const response = await axiosInstance.get("/posts", { params: { page } });
   //response.data.data ==> 글목록
   //response.data.totalCount ==> 게시글수
   return response.data;
@@ -28,7 +26,7 @@ export const apiCreatePost = async (data: FormData): Promise<Post> => {
 };
 
 // ----- 특정 글 가져오기 -----
-export const fetchPostById = async (id: string): Promise<Post | null> => {
+export const apiFetchPostById = async (id: string): Promise<Post | null> => {
   const response = await axiosInstance.get(`/posts/${id}`);
   const data = response.data;
 
@@ -52,7 +50,7 @@ export const apiUpdataPost = async (
   formData: FormData,
   id: string
 ): Promise<void> => {
-  await axiosInstance.put(`/post/${id}`, formData, {
+  await axiosInstance.put(`/posts/${id}`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
 };

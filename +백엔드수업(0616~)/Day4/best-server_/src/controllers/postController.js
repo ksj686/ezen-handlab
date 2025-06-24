@@ -3,6 +3,7 @@
 const pool = require("../models/dbPool");
 const path = require("path");
 const fs = require("fs");
+const { log } = require("console");
 
 exports.createPost = async (req, res) => {
   console.log("createPost들어옴...");
@@ -45,7 +46,8 @@ exports.createPost = async (req, res) => {
 exports.listPost = async (req, res) => {
   try {
     const size = 3; // 한 페이지 당 보여줄 목록 개수
-    const page = parseInt(req.query.page);
+    const page = parseInt(req.query.page) || 1; //현재 보여줄 페이지 번호
+    const offset = (page - 1) * size;
 
     // 1. 전체 게시글 수 가져오기
     const query = `select count(id) as  count from posts`;
@@ -59,9 +61,9 @@ exports.listPost = async (req, res) => {
     // 현재 보여줄 페이지 번호에 해당하는 데이터만 끊어서 가져오기(추후)
     const sql = `select id, title,content,writer,attach file, 
             date_format(wdate,'%Y-%m-%d') wdate
-            from posts order by id desc`;
+            from posts order by id desc  limit ? offset ?`;
 
-    const [posts] = await pool.query(sql);
+    const [posts] = await pool.query(sql, [size, offset]);
     // console.log(posts);
     res.json({
       data: posts,
@@ -74,14 +76,18 @@ exports.listPost = async (req, res) => {
   }
 }; //listPost()---------------------------------
 
+// GET /posts/100  ==> req.params
 exports.viewPost = async (req, res) => {
   const { id } = req.params;
+  console.log("id====", id);
+
   try {
     const sql = `select id, writer, title, content, attach file
     , date_format(wdate,'%Y-%m-%d %H:%i:%s') wdate
      from posts where id=?`;
 
     const [result] = await pool.query(sql, [id]);
+    console.log(id, result);
 
     if (result.length == 0) {
       return res.status(404).json({ message: "해당 글은 없습니다" });
@@ -137,6 +143,10 @@ exports.updatePost = async (req, res) => {
     const { id } = req.params;
     // 글내용: writer, title, ... => req.body
     const { writer, title, content } = req.body;
+    console.log("id ==== ", id);
+
+    console.log(req.body);
+
     // 첨부파일: req.file
     const file = req.file;
     let fileName = file?.filename;
@@ -162,17 +172,17 @@ exports.updatePost = async (req, res) => {
     }
 
     const params = [writer, title, content];
-    let sql2 = `update posts set writer=?, title=?, content=?`;
+    let sql2 = `update posts set writer=?, title=?, content=? `;
 
     if (file) {
-      sql2 += `, attach=?`;
+      sql2 += `, attach=? `;
       params.push(post.file);
       console.log("file: ", file);
     }
     sql2 += ` where id=?`;
     params.push(id);
     console.log("sql2: ", sql2);
-    const [result2] = await pool.query(sql1, params);
+    const [result2] = await pool.query(sql2, params);
 
     if (result2.affectedRows === 0) {
       return res.status(404).json({ message: "해당 글은 없습니다" });

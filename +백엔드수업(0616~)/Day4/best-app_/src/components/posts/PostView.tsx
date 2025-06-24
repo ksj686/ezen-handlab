@@ -37,19 +37,21 @@ const PostView: React.FC = () => {
     <div className="Post-view">
       <div className="row my-5">
         <div className="col px-5">
-          <h1 className="my-5 text-center">Post View [No. 게시글번호]</h1>
+          <h1 className="my-5 text-center">Post View [No. {id}]</h1>
           <div className="text-end my-2">
             <Link to={`/postEdit/${post.id}`}>
               <button className="btn btn-info mx-2">수정</button>
             </Link>
-            <button className="btn btn-danger onClick={handleDelete}">
+            <button className="btn btn-danger" onClick={handleDelete}>
               삭제
             </button>
           </div>
 
           <div className="card">
             <div className="card-body">
-              <h5>[게시글번호] 게시글제목</h5>
+              <h5>
+                [{post.id}] {post.title}
+              </h5>
               <hr />
               <div style={{ marginBottom: "1rem" }} className="text-center">
                 <img
