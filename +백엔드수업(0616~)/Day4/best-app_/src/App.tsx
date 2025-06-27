@@ -9,13 +9,49 @@ import PostApp from "./pages/PostApp";
 import PostView from "./components/posts/PostView";
 import PostEdit from "./components/posts/PostEdit";
 import SignUpForm from "./components/users/SignUpForm";
-import UserList from "./components/users/userList";
+import UserList from "./components/users/UserList";
 import LoginModal from "./components/users/LoginModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuthStore, type AuthUser } from "./stores/authStore";
+import axiosInstance from "./api/axiosInstance";
+import ChatApp from "./components/chat/ChatApp";
 
 function App() {
   const [showLogin, setShowLogin] = useState<boolean>(false);
+  // 로그인 액션 가져오기
+  const loginAuthUser = useAuthStore((s) => s.loginAuthUser);
+  const setLoading = useAuthStore((s) => s.setLoading);
 
+  const requestAuthUser = async () => {
+    try {
+      // accessToken 가지고 서버쪽에 인증된 사용자 정보를 요청
+      const accessToken = sessionStorage.getItem("accessToken");
+      if (accessToken) {
+        const response = await axiosInstance.get<AuthUser>("/auth/user", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        const authUser = await response.data;
+        loginAuthUser(authUser);
+        setLoading(false);
+      } else {
+        setLoading(false);
+      }
+      // if-------------------
+    } catch (error: any) {
+      console.error("accessToken이 유효하지 않아요", error);
+      alert(error);
+      sessionStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    requestAuthUser();
+  }, [loginAuthUser, setLoading]);
   return (
     <>
       <div className="container fluid py-5">
@@ -47,6 +83,7 @@ function App() {
                 <Route path="/postEdit/:id" element={<PostEdit />} />
                 <Route path="/signup" element={<SignUpForm />} />
                 <Route path="/admin/users" element={<UserList />} />
+                <Route path="/chatting" element={<ChatApp />} />
               </Routes>
             </Col>
           </Row>

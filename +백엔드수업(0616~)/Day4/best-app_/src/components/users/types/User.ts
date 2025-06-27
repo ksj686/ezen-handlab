@@ -1,3 +1,5 @@
+import type { AuthUser } from "../../../stores/authStore";
+
 export interface User {
   id?: number;
   name: string;
@@ -18,6 +20,10 @@ export interface ApiResponse<T = undefined> {
 export interface CreateUserData {
   insertId: number;
 }
+
+// 로그인 응답시 payload
+export type AuthUserResponse = ApiResponse<AuthUser>;
+// AuthUser(id, name, email, role, accessToken, refreshToken)
 
 // 회원가입 응답
 export type CreateUserResponse = ApiResponse<CreateUserData>;

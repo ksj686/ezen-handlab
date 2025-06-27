@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model members {
+  id           Int       @id @default(autoincrement())
+  name         String    @db.VarChar(50)
+  email        String    @unique(map: "email") @db.VarChar(100)
+  passwd       String    @db.VarChar(100)
+  role         String?   @default("USER") @db.VarChar(20)
+  indate       DateTime? @default(now()) @db.DateTime(0)
+  refreshtoken String?   @db.VarChar(255)
+}
+
+model posts {
+  id      Int       @id @default(autoincrement())
+  writer  String    @db.VarChar(100)
+  title   String    @db.VarChar(200)
+  content String?   @db.Text
+  attach  String?   @db.VarChar(255)
+  wdate   DateTime? @default(now()) @db.DateTime(0)
+
+  @@index([writer], map: "writer")
+}

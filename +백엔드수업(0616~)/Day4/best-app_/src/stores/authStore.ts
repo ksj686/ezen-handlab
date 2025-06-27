@@ -14,12 +14,16 @@ export interface AuthUser {
 // 상태 정의
 interface AuthState {
   authUser: AuthUser | null;
+  isLoading: boolean; // App에서 인증요청 모두 마치고 authUser state 값을 세팅하는 동안 로딩상태 유지
   loginAuthUser: (user: AuthUser) => void;
   logout: () => void;
+  setLoading: (loading: boolean) => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
   authUser: null,
+  isLoading: true,
   loginAuthUser: (user) => set(() => ({ authUser: user })),
   logout: () => set(() => ({ authUser: null })),
+  setLoading: (loading) => set({ isLoading: loading }),
 }));

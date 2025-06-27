@@ -27,6 +27,16 @@ const upMulter = multer({ storage: storage });
 
 // '/api/posts/'
 //get /api/posts
+/**
+ * @swagger
+ * /api/posts:
+ *   get:
+ *     summary: post list
+ *     description: Retrieve a list of all post
+ *     responses:
+ *       200:
+ *         description: A list of post
+ */
 router.get("/", postController.listPost);
 
 //post /api/posts : 포스트 글쓰기(C) - 파일업로드 처리 필요

@@ -4,7 +4,9 @@ import type {
   CreateUserResponse,
   CreateEmailResponse,
   UserListResponse,
+  AuthUserResponse,
 } from "../components/users/types/User";
+import type { AuthUser } from "../stores/authStore";
 
 // 회원가입 요청
 export const apiSignUp = async (user: User): Promise<CreateUserResponse> => {
@@ -23,6 +25,22 @@ export const apiCheckEmail = async (
 
 // 전체 회원 목록(user 비밀번호 빼고... 새로 만들어야?)
 export const apiUserList = async (): Promise<UserListResponse[]> => {
-  const response = await axiosInstance.get("/admin/users");
+  const accessToken = sessionStorage.getItem("accessToken");
+  const response = await axiosInstance.get(
+    "/admin/users"
+    // , {
+    // headers: {
+    //   Authorization: `Bearer ${accessToken}`,
+    // },
+    // }
+  );
+  return response.data;
+};
+
+export const apiSignIn = async (loginUser: {
+  email: string;
+  passwd: string;
+}): Promise<AuthUserResponse> => {
+  const response = await axiosInstance.post("/auth/login", loginUser); // 비밀번호가 들어가있기 때문에 post 씀
   return response.data;
 };
