@@ -1,5 +1,5 @@
 import ProductList from "@/components/products/ProductList";
-import { Product } from "@/types/Product";
+import type { Product } from "@/types/Product";
 import React, { ChangeEvent } from "react";
 import styles from "./AllProductPage.module.css";
 import { useRouter } from "next/router";
@@ -24,7 +24,7 @@ export default function AllProductPage({ products, totalCount }: Props) {
 
   const router = useRouter();
 
-  const handleSordChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  const handleSortChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const selectedSort = e.target.value; // 사용자가 선택한 정렬값(latest, price_asc, price_desc)
     router.push(`/products?sort=${selectedSort}`);
     //   router.push('/페이지') => 페이지 이동. router.reload(), router.back()
@@ -36,13 +36,16 @@ export default function AllProductPage({ products, totalCount }: Props) {
       <div>
         <label>
           정렬 방식
-          <select style={{ marginLeft: 8, marginRight: 8 }}>
+          <select
+            style={{ marginLeft: 8, marginRight: 8 }}
+            onChange={handleSortChange}
+          >
             <option value="latest">최신 상품순</option>
             <option value="price_asc">가격 낮은순</option>
             <option value="price_desc">가격 높은순</option>
           </select>
         </label>
-        <span>총 상품 개수: {totalCount}</span>
+        <span>총 상품 개수: {totalCount} 개</span>
       </div>
       <div style={{ padding: "1rem" }}>
         <ProductList products={products} />

@@ -1,26 +1,20 @@
 import React from "react";
 import type { Product } from "@/types/Product";
 import { GetServerSideProps } from "next";
+import ProductDetail from "@/components/products/ProductDetail";
 
+// SSR
 interface Props {
   product: Product;
 }
 // SSR
 export default function ProductDetailPage({ product }: Props) {
-  return (
-    <div>
-      name: {product.name}
-      <br />
-      price: {product.price.toLocaleString()} 원
-      <br />
-      <img src={product.image_url} style={{ width: "220px" }} />
-    </div>
-  );
+  return <ProductDetail product={product} />;
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  // products?sort=idDESC ==> context.query.sord
-  // /products/1 ==> context,params
+  // products?sort=idDESC ==> context.query.sort
+  // /products/1 ==> context.params.id
   const id = context.params?.id;
   const response = await fetch(`http://localhost:7777/api/products/${id}`);
 

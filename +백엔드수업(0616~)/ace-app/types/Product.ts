@@ -5,4 +5,5 @@ export interface Product {
   image_url: string;
   description?: string;
   deal_price?: number;
+  spec?: string;
 }
